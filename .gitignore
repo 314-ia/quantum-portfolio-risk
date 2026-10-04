@@ -1,0 +1,16 @@
+# Credenciales: nunca se suben a un repositorio
+.env
+.env.*
+!.env.example
+
+# Entornos de Python locales: se recrean con requirements-lock.txt
+.venv/
+
+# Copia local de precios: Yahoo limita sus datos a uso personal.
+# El notebook la vuelve a bajar y la recrea en la primera ejecución.
+CACIC/notebook/datos/precios_yahoo.csv
+
+# Python y Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

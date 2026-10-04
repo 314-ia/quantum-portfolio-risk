@@ -1,0 +1,13 @@
+# Paquetes que necesita el notebook, con versiones mínimas. Para instalar con una versión de Python distinta de la 3.13.
+# Solo se probó con Python 3.13.5: las versiones exactas de esa prueba están en requirements-lock.txt
+numpy
+pandas
+scipy
+matplotlib
+jinja2
+jupyterlab
+yfinance
+qiskit>=1.3
+qiskit-aer>=0.15
+qiskit-ibm-runtime>=0.34
+pylatexenc
