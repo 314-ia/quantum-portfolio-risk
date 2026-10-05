@@ -103,9 +103,23 @@ La clase forma parte del Curso 3, "Fundamentos e Intuición del Cómputo Cuánti
 
 ## Cómo citar
 
+Para citar el **material del curso**, este repositorio:
+
+```bibtex
+@misc{brana2026finanzascuanticas,
+  author       = {Brana, Juan Pablo and Fernandez, Alejandro and Litterio, Alejandra M. J.},
+  title        = {Aplicaciones Financieras en la Computaci{\'o}n Cu{\'a}ntica},
+  year         = {2026},
+  howpublished = {Material del curso, XXX Escuela Internacional de Inform{\'a}tica, CACIC 2026},
+  url          = {https://github.com/314-ia/quantum-portfolio-risk}
+}
+```
+
+Para citar el **método**, el trabajo de referencia:
+
 ```bibtex
 @inproceedings{brana2026parametric,
-  author    = {Brana, Juan Pablo and Fernandez, Alejandro and Litterio, Alejandra M. J.},
+  author    = {Brana, Juan Pablo and Litterio, Alejandra M. J. and Fernandez, Alejandro and Sepulveda Cuevas, Samuel E.},
   title     = {A Parametric Quantum Circuit for Portfolio Risk Assessment at 110 Qubits: Three-Way Validation and a Demonstrator of the Path to Advantage via Amplitude Estimation},
   booktitle = {Workshop Chileno de Computaci{\'o}n Cu{\'a}ntica e Ingenier{\'i}a de Software Cu{\'a}ntico (QCQSE-Chile), JCC 2026},
   year      = {2026},
@@ -117,6 +131,8 @@ La clase forma parte del Curso 3, "Fundamentos e Intuición del Cómputo Cuánti
 
 MIT: ver [LICENSE](LICENSE). Los precios de mercado provienen de Yahoo Finance y no se redistribuyen en este repositorio: el notebook los descarga al ejecutarse.
 
-## Autor
+## Autores
 
-Juan Pablo Braña, CAETI, Universidad Abierta Interamericana
+- Juan Pablo Braña, CAETI, Universidad Abierta Interamericana
+- Alejandro Fernández, LIFIA, Universidad Nacional de La Plata
+- Alejandra M. J. Litterio, CAETI, Universidad Abierta Interamericana
