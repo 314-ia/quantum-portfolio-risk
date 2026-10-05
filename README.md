@@ -7,6 +7,8 @@
 [![qubits](https://img.shields.io/badge/qubits-12%20%7C%20110-informational.svg)](#resultados-en-hardware-real)
 [![CACIC 2026](https://img.shields.io/badge/CACIC-2026-orange.svg)](https://frcu.utn.edu.ar/index.php/escuela-cacic/cursos-cacic)
 
+**[Sitio web](https://314-ia.github.io/quantum-portfolio-risk/)** · **[Notebook en línea](https://314-ia.github.io/quantum-portfolio-risk/notebook.html)** · **[Diapositivas en PDF](CACIC/presentacion/Aplicaciones_Financieras_Computacion_Cuantica_CACIC2026.pdf)** · **[English](https://314-ia.github.io/quantum-portfolio-risk/en/)**
+
 > Material educativo y de investigación. **No es una recomendación de inversión y no demuestra ventaja cuántica:** estos circuitos se pueden simular en una laptop y un método clásico logra carteras de menor riesgo. Ver [Qué se puede afirmar y qué no](#qué-se-puede-afirmar-y-qué-no).
 
 Circuitos cuánticos paramétricos para **estimar el riesgo de cada activo de una cartera de inversión**, armados con precios reales de mercado y ejecutados en simuladores y en una computadora cuántica de IBM. Los ángulos del circuito se calculan directamente de los datos históricos, sin el bucle de optimización que usan VQE y QAOA.
@@ -96,6 +98,8 @@ python3 -m venv .venv
 - [`CACIC/notebook/datos/`](CACIC/notebook/datos/): resultado real del circuito de 12 qubits y datos del experimento de 110 qubits
 - [`CACIC/material_extra/figuras/`](CACIC/material_extra/figuras/): las figuras de las diapositivas
 - [`CACIC/README.md`](CACIC/README.md): la guía de la clase
+- [`docs/`](docs/): el [sitio web](https://314-ia.github.io/quantum-portfolio-risk/) del proyecto, con el notebook ejecutado para leer en línea
+- [`assets/`](assets/): la animación del método y los guiones que generan la animación y la página del notebook
 
 Está previsto sumar más adelante el código del trabajo de investigación en el que se basa la clase.
 
