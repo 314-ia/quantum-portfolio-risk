@@ -17,6 +17,7 @@
   .barrido { opacity: 0; animation-name: barrer; animation-timing-function: linear; }
   .barra { animation-name: crecer; }
   .valor { animation-name: mostrar; }
+  .resultado { animation-name: revelar; }
   .resto { opacity: .3; animation-name: atenuar; }
   .marca { animation-name: elegir; }
   .leyenda { opacity: 0; animation-name: none; }
@@ -30,8 +31,9 @@
   @keyframes enlazar { 0%, 30% { opacity: 0 } 33%, 93% { opacity: .42 } 97%, 100% { opacity: 0 } }
   @keyframes viajar { 0%, 31.9% { opacity: 0; stroke-dashoffset: var(--s) } 32% { opacity: 1; stroke-dashoffset: var(--s) } 40% { opacity: 1; stroke-dashoffset: var(--f) } 40.1% { opacity: 1; stroke-dashoffset: var(--s) } 48% { opacity: 1; stroke-dashoffset: var(--f) } 48.1%, 100% { opacity: 0; stroke-dashoffset: var(--f) } }
   @keyframes barrer { 0%, 53.9% { opacity: 0; transform: translateX(34px) } 54% { opacity: 1; transform: translateX(34px) } 66% { opacity: 1; transform: translateX(966px) } 67%, 100% { opacity: 0; transform: translateX(966px) } }
-  @keyframes crecer { 0%, 54% { transform: scaleY(0); opacity: 1 } 58%, 85% { transform: scaleY(1); opacity: 1 } 87%, 100% { transform: scaleY(1); opacity: 0 } }
-  @keyframes mostrar { 0%, 58% { opacity: 0 } 60%, 85% { opacity: 1 } 87%, 100% { opacity: 0 } }
+  @keyframes crecer { 0%, 54% { transform: scaleY(0) } 58%, 100% { transform: scaleY(1) } }
+  @keyframes mostrar { 0%, 58% { opacity: 0 } 60%, 100% { opacity: 1 } }
+  @keyframes revelar { 0%, 53% { opacity: 0 } 54.5%, 92% { opacity: 1 } 96%, 100% { opacity: 0 } }
   @keyframes atenuar { 0%, 70% { opacity: 1 } 74%, 92% { opacity: .3 } 96%, 100% { opacity: 1 } }
   @keyframes elegir { 0%, 70% { opacity: 0 } 74%, 92% { opacity: 1 } 95%, 100% { opacity: 0 } }
   @keyframes leer1 { 0% { opacity: 0 } 2%, 8% { opacity: 1 } 10%, 100% { opacity: 0 } }
@@ -95,8 +97,8 @@
     <path d="M55,113.5 L60,104 L65,113.5 Z" fill="#9fb2bf"/></g>
   <circle cx="60" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="47" y="341.9" width="26" height="30.1" rx="3" fill="#9fb2bf" style="transform-origin:60px 372px;animation-delay:0.06s"/>
-<text class="c valor" x="60" y="334.9" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.06s">0,28</text>
+<g class="c resultado"><rect class="c barra" x="47" y="341.9" width="26" height="30.1" rx="3" fill="#9fb2bf" style="transform-origin:60px 372px;animation-delay:0.06s"/>
+<text class="c valor" x="60" y="334.9" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.06s">0,28</text></g>
 <g class="c marca"><rect x="44.5" y="339.4" width="31" height="32.6" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="60" cy="385" r="3.4" fill="#F7F5EF"/></g>
 <g class="c resto"><g class="c qubit" style="animation-delay:0.07s">
   <text x="140" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">MSFT</text>
@@ -108,8 +110,8 @@
     <path d="M135,113.5 L140,104 L145,113.5 Z" fill="#b5afa4"/></g>
   <circle cx="140" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="127" y="321.5" width="26" height="50.5" rx="3" fill="#b5afa4" style="transform-origin:140px 372px;animation-delay:0.25s"/>
-<text class="c valor" x="140" y="314.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.25s">0,47</text></g>
+<g class="c resultado"><rect class="c barra" x="127" y="321.5" width="26" height="50.5" rx="3" fill="#b5afa4" style="transform-origin:140px 372px;animation-delay:0.25s"/>
+<text class="c valor" x="140" y="314.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.25s">0,47</text></g></g>
 <g class="c resto"><g class="c qubit" style="animation-delay:0.14s">
   <text x="220" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">AMZN</text>
   <circle cx="220" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
@@ -120,8 +122,8 @@
     <path d="M215,113.5 L220,104 L225,113.5 Z" fill="#b8afa0"/></g>
   <circle cx="220" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="207" y="318.3" width="26" height="53.7" rx="3" fill="#b8afa0" style="transform-origin:220px 372px;animation-delay:0.43s"/>
-<text class="c valor" x="220" y="311.3" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.43s">0,50</text></g>
+<g class="c resultado"><rect class="c barra" x="207" y="318.3" width="26" height="53.7" rx="3" fill="#b8afa0" style="transform-origin:220px 372px;animation-delay:0.43s"/>
+<text class="c valor" x="220" y="311.3" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.43s">0,50</text></g></g>
 <g class="c resto"><g class="c qubit" style="animation-delay:0.21s">
   <text x="300" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">NVDA</text>
   <circle cx="300" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
@@ -132,8 +134,8 @@
     <path d="M295,113.5 L300,104 L305,113.5 Z" fill="#cdab87"/></g>
   <circle cx="300" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="287" y="298.5" width="26" height="73.5" rx="3" fill="#cdab87" style="transform-origin:300px 372px;animation-delay:0.62s"/>
-<text class="c valor" x="300" y="291.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.62s">0,68</text></g>
+<g class="c resultado"><rect class="c barra" x="287" y="298.5" width="26" height="73.5" rx="3" fill="#cdab87" style="transform-origin:300px 372px;animation-delay:0.62s"/>
+<text class="c valor" x="300" y="291.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.62s">0,68</text></g></g>
 <g class="c resto"><g class="c qubit" style="animation-delay:0.28s">
   <text x="380" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">TSLA</text>
   <circle cx="380" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
@@ -144,8 +146,8 @@
     <path d="M375,113.5 L380,104 L385,113.5 Z" fill="#eba762"/></g>
   <circle cx="380" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="367" y="270.2" width="26" height="101.8" rx="3" fill="#eba762" style="transform-origin:380px 372px;animation-delay:0.80s"/>
-<text class="c valor" x="380" y="263.2" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.80s">0,94</text></g>
+<g class="c resultado"><rect class="c barra" x="367" y="270.2" width="26" height="101.8" rx="3" fill="#eba762" style="transform-origin:380px 372px;animation-delay:0.80s"/>
+<text class="c valor" x="380" y="263.2" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.80s">0,94</text></g></g>
 <g class="c resto"><g class="c qubit" style="animation-delay:0.35s">
   <text x="460" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">MELI</text>
   <circle cx="460" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
@@ -156,8 +158,8 @@
     <path d="M455,113.5 L460,104 L465,113.5 Z" fill="#c0ad97"/></g>
   <circle cx="460" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="447" y="310.8" width="26" height="61.2" rx="3" fill="#c0ad97" style="transform-origin:460px 372px;animation-delay:0.99s"/>
-<text class="c valor" x="460" y="303.8" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.99s">0,57</text></g>
+<g class="c resultado"><rect class="c barra" x="447" y="310.8" width="26" height="61.2" rx="3" fill="#c0ad97" style="transform-origin:460px 372px;animation-delay:0.99s"/>
+<text class="c valor" x="460" y="303.8" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.99s">0,57</text></g></g>
 <g class="c qubit" style="animation-delay:0.42s">
   <text x="540" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">JPM</text>
   <circle cx="540" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
@@ -168,8 +170,8 @@
     <path d="M535,113.5 L540,104 L545,113.5 Z" fill="#8bb5d8"/></g>
   <circle cx="540" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="527" y="361.1" width="26" height="10.9" rx="3" fill="#8bb5d8" style="transform-origin:540px 372px;animation-delay:1.17s"/>
-<text class="c valor" x="540" y="354.1" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.17s">0,10</text>
+<g class="c resultado"><rect class="c barra" x="527" y="361.1" width="26" height="10.9" rx="3" fill="#8bb5d8" style="transform-origin:540px 372px;animation-delay:1.17s"/>
+<text class="c valor" x="540" y="354.1" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.17s">0,10</text></g>
 <g class="c marca"><rect x="524.5" y="358.6" width="31" height="13.4" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="540" cy="385" r="3.4" fill="#F7F5EF"/></g>
 <g class="c qubit" style="animation-delay:0.49s">
   <text x="620" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">BAC</text>
@@ -181,8 +183,8 @@
     <path d="M615,113.5 L620,104 L625,113.5 Z" fill="#8fb5d2"/></g>
   <circle cx="620" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="607" y="356.6" width="26" height="15.4" rx="3" fill="#8fb5d2" style="transform-origin:620px 372px;animation-delay:1.36s"/>
-<text class="c valor" x="620" y="349.6" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.36s">0,14</text>
+<g class="c resultado"><rect class="c barra" x="607" y="356.6" width="26" height="15.4" rx="3" fill="#8fb5d2" style="transform-origin:620px 372px;animation-delay:1.36s"/>
+<text class="c valor" x="620" y="349.6" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.36s">0,14</text></g>
 <g class="c marca"><rect x="604.5" y="354.1" width="31" height="17.9" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="620" cy="385" r="3.4" fill="#F7F5EF"/></g>
 <g class="c qubit" style="animation-delay:0.56s">
   <text x="700" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">XOM</text>
@@ -194,8 +196,8 @@
     <path d="M695,113.5 L700,104 L705,113.5 Z" fill="#b2afa8"/></g>
   <circle cx="700" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="687" y="323.9" width="26" height="48.1" rx="3" fill="#b2afa8" style="transform-origin:700px 372px;animation-delay:1.54s"/>
-<text class="c valor" x="700" y="316.9" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.54s">0,45</text>
+<g class="c resultado"><rect class="c barra" x="687" y="323.9" width="26" height="48.1" rx="3" fill="#b2afa8" style="transform-origin:700px 372px;animation-delay:1.54s"/>
+<text class="c valor" x="700" y="316.9" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.54s">0,45</text></g>
 <g class="c marca"><rect x="684.5" y="321.4" width="31" height="50.6" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="700" cy="385" r="3.4" fill="#F7F5EF"/></g>
 <g class="c resto"><g class="c qubit" style="animation-delay:0.63s">
   <text x="780" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">CVX</text>
@@ -207,8 +209,8 @@
     <path d="M775,113.5 L780,104 L785,113.5 Z" fill="#baae9e"/></g>
   <circle cx="780" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="767" y="316.6" width="26" height="55.4" rx="3" fill="#baae9e" style="transform-origin:780px 372px;animation-delay:1.73s"/>
-<text class="c valor" x="780" y="309.6" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.73s">0,51</text></g>
+<g class="c resultado"><rect class="c barra" x="767" y="316.6" width="26" height="55.4" rx="3" fill="#baae9e" style="transform-origin:780px 372px;animation-delay:1.73s"/>
+<text class="c valor" x="780" y="309.6" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.73s">0,51</text></g></g>
 <g class="c qubit" style="animation-delay:0.70s">
   <text x="860" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">KO</text>
   <circle cx="860" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
@@ -219,8 +221,8 @@
     <path d="M855,113.5 L860,104 L865,113.5 Z" fill="#8bb5d7"/></g>
   <circle cx="860" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="847" y="360.3" width="26" height="11.7" rx="3" fill="#8bb5d7" style="transform-origin:860px 372px;animation-delay:1.91s"/>
-<text class="c valor" x="860" y="353.3" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.91s">0,11</text>
+<g class="c resultado"><rect class="c barra" x="847" y="360.3" width="26" height="11.7" rx="3" fill="#8bb5d7" style="transform-origin:860px 372px;animation-delay:1.91s"/>
+<text class="c valor" x="860" y="353.3" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.91s">0,11</text></g>
 <g class="c marca"><rect x="844.5" y="357.8" width="31" height="14.2" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="860" cy="385" r="3.4" fill="#F7F5EF"/></g>
 <g class="c qubit" style="animation-delay:0.77s">
   <text x="940" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">PEP</text>
@@ -232,8 +234,8 @@
     <path d="M935,113.5 L940,104 L945,113.5 Z" fill="#91b4d1"/></g>
   <circle cx="940" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>
-<rect class="c barra" x="927" y="355.5" width="26" height="16.5" rx="3" fill="#91b4d1" style="transform-origin:940px 372px;animation-delay:2.10s"/>
-<text class="c valor" x="940" y="348.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:2.10s">0,15</text>
+<g class="c resultado"><rect class="c barra" x="927" y="355.5" width="26" height="16.5" rx="3" fill="#91b4d1" style="transform-origin:940px 372px;animation-delay:2.10s"/>
+<text class="c valor" x="940" y="348.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:2.10s">0,15</text></g>
 <g class="c marca"><rect x="924.5" y="353.0" width="31" height="19.0" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="940" cy="385" r="3.4" fill="#F7F5EF"/></g>
 <path d="M34,372.5 H966" stroke="#3a5373" stroke-width="1"/>
 <g class="c barrido"><rect x="-16" y="90" width="32" height="286" fill="url(#haz)" opacity=".13"/><rect x="-5" y="90" width="10" height="286" fill="url(#haz)" opacity=".22"/><rect x="-1.1" y="90" width="2.2" height="286" fill="url(#haz)"/></g>

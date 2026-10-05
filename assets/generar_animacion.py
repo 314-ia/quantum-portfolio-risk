@@ -58,6 +58,7 @@ s.append(f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" vi
   .barrido {{ opacity: 0; animation-name: barrer; animation-timing-function: linear; }}
   .barra {{ animation-name: crecer; }}
   .valor {{ animation-name: mostrar; }}
+  .resultado {{ animation-name: revelar; }}
   .resto {{ opacity: .3; animation-name: atenuar; }}
   .marca {{ animation-name: elegir; }}
   .leyenda {{ opacity: 0; animation-name: none; }}
@@ -71,8 +72,9 @@ s.append(f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" vi
   @keyframes enlazar {{ 0%, 30% {{ opacity: 0 }} 33%, 93% {{ opacity: .42 }} 97%, 100% {{ opacity: 0 }} }}
   @keyframes viajar {{ 0%, 31.9% {{ opacity: 0; stroke-dashoffset: var(--s) }} 32% {{ opacity: 1; stroke-dashoffset: var(--s) }} 40% {{ opacity: 1; stroke-dashoffset: var(--f) }} 40.1% {{ opacity: 1; stroke-dashoffset: var(--s) }} 48% {{ opacity: 1; stroke-dashoffset: var(--f) }} 48.1%, 100% {{ opacity: 0; stroke-dashoffset: var(--f) }} }}
   @keyframes barrer {{ 0%, 53.9% {{ opacity: 0; transform: translateX(34px) }} 54% {{ opacity: 1; transform: translateX(34px) }} 66% {{ opacity: 1; transform: translateX(966px) }} 67%, 100% {{ opacity: 0; transform: translateX(966px) }} }}
-  @keyframes crecer {{ 0%, 54% {{ transform: scaleY(0); opacity: 1 }} 58%, 85% {{ transform: scaleY(1); opacity: 1 }} 87%, 100% {{ transform: scaleY(1); opacity: 0 }} }}
-  @keyframes mostrar {{ 0%, 58% {{ opacity: 0 }} 60%, 85% {{ opacity: 1 }} 87%, 100% {{ opacity: 0 }} }}
+  @keyframes crecer {{ 0%, 54% {{ transform: scaleY(0) }} 58%, 100% {{ transform: scaleY(1) }} }}
+  @keyframes mostrar {{ 0%, 58% {{ opacity: 0 }} 60%, 100% {{ opacity: 1 }} }}
+  @keyframes revelar {{ 0%, 53% {{ opacity: 0 }} 54.5%, 92% {{ opacity: 1 }} 96%, 100% {{ opacity: 0 }} }}
   @keyframes atenuar {{ 0%, 70% {{ opacity: 1 }} 74%, 92% {{ opacity: .3 }} 96%, 100% {{ opacity: 1 }} }}
   @keyframes elegir {{ 0%, 70% {{ opacity: 0 }} 74%, 92% {{ opacity: 1 }} 95%, 100% {{ opacity: 0 }} }}
   @keyframes leer1 {{ 0% {{ opacity: 0 }} 2%, 8% {{ opacity: 1 }} 10%, 100% {{ opacity: 0 }} }}
@@ -140,8 +142,8 @@ for k, t in enumerate(TICKERS):
     # barra con el índice medido
     h = ALTO * MEDIDO[t]
     retraso = 0.12 * T * (xk - 34) / 932
-    s.append(f'''<rect class="c barra" x="{n(xk - 13)}" y="{BASE - h:.1f}" width="26" height="{h:.1f}" rx="3" fill="{col}" style="transform-origin:{n(xk)}px {BASE}px;animation-delay:{retraso:.2f}s"/>
-<text class="c valor" x="{n(xk)}" y="{BASE - h - 7:.1f}" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:{retraso:.2f}s">{f"{MEDIDO[t]:.2f}".replace(".", ",")}</text>{cierra}''')
+    s.append(f'''<g class="c resultado"><rect class="c barra" x="{n(xk - 13)}" y="{BASE - h:.1f}" width="26" height="{h:.1f}" rx="3" fill="{col}" style="transform-origin:{n(xk)}px {BASE}px;animation-delay:{retraso:.2f}s"/>
+<text class="c valor" x="{n(xk)}" y="{BASE - h - 7:.1f}" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:{retraso:.2f}s">{f"{MEDIDO[t]:.2f}".replace(".", ",")}</text></g>{cierra}''')
     if elegido:
         s.append(f'<g class="c marca"><rect x="{n(xk - 15.5)}" y="{BASE - h - 2.5:.1f}" width="31" height="{h + 2.5:.1f}" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/>'
                  f'<circle cx="{n(xk)}" cy="{BASE + 13}" r="3.4" fill="#F7F5EF"/></g>')
