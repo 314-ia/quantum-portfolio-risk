@@ -105,7 +105,7 @@ La clase forma parte del Curso 3, "Fundamentos e Intuición del Cómputo Cuánti
 
 ```bibtex
 @inproceedings{brana2026parametric,
-  author    = {Bra{\~n}a, Juan Pablo and Litterio, Alejandra M. J. and Fern{\'a}ndez, Alejandro and Sep{\'u}lveda Cuevas, Samuel E.},
+  author    = {Brana, Juan Pablo and Fernandez, Alejandro and Litterio, Alejandra M. J.},
   title     = {A Parametric Quantum Circuit for Portfolio Risk Assessment at 110 Qubits: Three-Way Validation and a Demonstrator of the Path to Advantage via Amplitude Estimation},
   booktitle = {Workshop Chileno de Computaci{\'o}n Cu{\'a}ntica e Ingenier{\'i}a de Software Cu{\'a}ntico (QCQSE-Chile), JCC 2026},
   year      = {2026},
