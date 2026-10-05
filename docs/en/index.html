@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum portfolio risk with Qiskit: a parametric circuit on real market data</title>
+<meta name="description" content="A Qiskit notebook and slides that estimate the risk of an investment portfolio with parametric quantum circuits, built from real market prices and run on an IBM quantum computer.">
+<meta name="author" content="Juan Pablo Braña, Alejandro Fernández, Alejandra M. J. Litterio">
+<link rel="canonical" href="https://314-ia.github.io/quantum-portfolio-risk/en/">
+<link rel="alternate" hreflang="es" href="https://314-ia.github.io/quantum-portfolio-risk/">
+<link rel="alternate" hreflang="en" href="https://314-ia.github.io/quantum-portfolio-risk/en/">
+<link rel="alternate" hreflang="x-default" href="https://314-ia.github.io/quantum-portfolio-risk/">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Portfolio Risk">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_AR">
+<meta property="og:title" content="Quantum portfolio risk with Qiskit">
+<meta property="og:description" content="A parametric quantum circuit built from real market prices, run in Qiskit and on an IBM quantum computer. Notebook and slides.">
+<meta property="og:url" content="https://314-ia.github.io/quantum-portfolio-risk/en/">
+<meta property="og:image" content="https://314-ia.github.io/quantum-portfolio-risk/assets/social-card.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Twelve qubits, one per asset, with their risk indices measured on an IBM quantum computer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quantum portfolio risk with Qiskit">
+<meta name="twitter:description" content="A parametric quantum circuit built from real market prices, run in Qiskit and on IBM Quantum. Notebook and slides.">
+<meta name="twitter:image" content="https://314-ia.github.io/quantum-portfolio-risk/assets/social-card.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://314-ia.github.io/quantum-portfolio-risk/#material",
+      "name": "Financial Applications of Quantum Computing",
+      "alternateName": ["Quantum Portfolio Risk", "Aplicaciones Financieras en la Computación Cuántica"],
+      "description": "A Qiskit notebook and slides that estimate the risk of an investment portfolio with parametric quantum circuits, built from real market prices and run on an IBM quantum computer.",
+      "url": "https://314-ia.github.io/quantum-portfolio-risk/en/",
+      "inLanguage": "es",
+      "isAccessibleForFree": true,
+      "datePublished": "2026-10-04",
+      "license": "https://opensource.org/licenses/MIT",
+      "learningResourceType": ["Jupyter Notebook", "Slides"],
+      "educationalLevel": "Introductory",
+      "teaches": ["Modern portfolio theory", "Markowitz efficient frontier", "Parametric quantum circuits", "VQE", "Qiskit", "IBM Quantum"],
+      "keywords": "quantum computing, quantum finance, Qiskit, IBM Quantum, portfolio risk, parametric quantum circuits, VQE, QAOA, Markowitz",
+      "author": [
+        {"@type": "Person", "name": "Juan Pablo Braña", "affiliation": {"@type": "Organization", "name": "CAETI, Universidad Abierta Interamericana"}},
+        {"@type": "Person", "name": "Alejandro Fernández", "affiliation": {"@type": "Organization", "name": "LIFIA, Universidad Nacional de La Plata"}},
+        {"@type": "Person", "name": "Alejandra M. J. Litterio", "affiliation": {"@type": "Organization", "name": "CAETI, Universidad Abierta Interamericana"}}
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "quantum-portfolio-risk",
+      "codeRepository": "https://github.com/314-ia/quantum-portfolio-risk",
+      "programmingLanguage": "Python",
+      "runtimePlatform": "Qiskit",
+      "license": "https://opensource.org/licenses/MIT",
+      "isPartOf": {"@id": "https://314-ia.github.io/quantum-portfolio-risk/#material"}
+    }
+  ]
+}
+</script>
+<style>
+:root { --bg: #F7F5EF; --ink: #0E1B2C; --muted: #5A6472; --blue: #2364AA; --orange: #A85200; --card: #FFFDF8; --line: #DDD8CB; --code: #EFEBDF; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0B1626; --ink: #F1EEE6; --muted: #9FB3C8; --blue: #7FB7E6; --orange: #F2A65A; --card: #12233A; --line: #28405F; --code: #0F1E33; } }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+a { color: var(--blue); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+header.top { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; padding: 22px 0; }
+.brand { font-weight: 700; letter-spacing: .02em; color: var(--ink); text-decoration: none; }
+nav a { margin-left: 18px; text-decoration: none; font-size: 16px; }
+nav a:first-child { margin-left: 0; }
+h1, h2, h3 { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; line-height: 1.15; }
+h1 { font-size: clamp(34px, 5.4vw, 58px); margin: 34px 0 16px; letter-spacing: -.01em; }
+h2 { font-size: clamp(26px, 3.4vw, 36px); margin: 0 0 18px; }
+h3 { font-size: 21px; margin: 0 0 8px; }
+.lead { font-size: clamp(19px, 2.2vw, 23px); color: var(--muted); max-width: 46em; margin: 0 0 26px; }
+.eyebrow { font-size: 14px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); margin: 0; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 36px; }
+.btn { display: inline-block; padding: 12px 20px; border-radius: 10px; border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 17px; }
+.btn.primary { background: var(--ink); color: var(--bg); }
+figure { margin: 0 0 14px; }
+figure img { display: block; width: 100%; height: auto; border-radius: 14px; }
+figcaption { color: var(--muted); font-size: 16px; margin-top: 10px; }
+section { padding: 54px 0 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+.card p { margin: 0; color: var(--muted); font-size: 17px; }
+.num { font: 600 15px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--orange); letter-spacing: .08em; display: block; margin-bottom: 12px; }
+.tabla { overflow-x: auto; margin: 0 0 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 17px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 15px; }
+code { background: var(--code); padding: 2px 6px; border-radius: 6px; }
+pre { background: var(--code); border: 1px solid var(--line); border-radius: 12px; padding: 18px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; padding: 0; }
+ul.claro { padding-left: 1.1em; margin: 0; }
+ul.claro li { margin-bottom: 10px; }
+.nota { border-left: 4px solid var(--orange); padding: 4px 0 4px 16px; color: var(--muted); margin: 0 0 8px; }
+footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="./">Quantum Portfolio Risk</a>
+  <nav aria-label="Main">
+    <a href="../notebook.html" hreflang="es">Notebook</a>
+    <a href="https://github.com/314-ia/quantum-portfolio-risk/blob/main/CACIC/presentacion/Aplicaciones_Financieras_Computacion_Cuantica_CACIC2026.pdf" hreflang="es">Slides</a>
+    <a href="https://github.com/314-ia/quantum-portfolio-risk">GitHub</a>
+    <a href="../" hreflang="es" lang="es">Español</a>
+  </nav>
+</header>
+
+<main>
+<p class="eyebrow">Quantum computing applied to finance</p>
+<h1>Quantum portfolio risk with Qiskit</h1>
+<p class="lead">A parametric quantum circuit that estimates the risk of each asset in an investment portfolio, built from real market prices and run in Qiskit and on an IBM quantum computer. An introductory notebook and slide deck, written in Spanish.</p>
+<div class="btns">
+  <a class="btn primary" href="../notebook.html" hreflang="es">Open the notebook</a>
+  <a class="btn" href="https://github.com/314-ia/quantum-portfolio-risk/blob/main/CACIC/presentacion/Aplicaciones_Financieras_Computacion_Cuantica_CACIC2026.pdf" hreflang="es">Slides (PDF)</a>
+  <a class="btn" href="https://github.com/314-ia/quantum-portfolio-risk">Code on GitHub</a>
+</div>
+
+<figure>
+  <img src="../assets/como-se-compone-el-metodo.svg" width="1000" height="440" alt="Animation of the method. Twelve qubits, one per asset. An RY rotation loads each asset's own risk into its qubit. CRY gates add contagion between correlated assets. On measurement, the frequency of 1 in each qubit is its risk index. The portfolio takes the six assets with the lowest index.">
+  <figcaption>The animation uses the real data from the class: each arrow's rotation comes from the asset's risk, and the bars are the index measured on IBM's <code>ibm_fez</code> processor. Its captions are in Spanish.</figcaption>
+</figure>
+
+<section id="idea">
+  <h2>How the method works</h2>
+  <div class="grid">
+    <div class="card"><span class="num">01</span><h3>One qubit per asset</h3><p>Twelve well-known stocks, from Coca-Cola to Tesla and MercadoLibre, become twelve qubits.</p></div>
+    <div class="card"><span class="num">02</span><h3>RY loads the asset's own risk</h3><p>A rotation by 2·arcsin(√R) leaves in each qubit the risk the asset carries on its own.</p></div>
+    <div class="card"><span class="num">03</span><h3>CRY adds contagion</h3><p>Controlled gates connect the assets that move together, with a correlation of 0.6 or more.</p></div>
+    <div class="card"><span class="num">04</span><h3>A single measurement run</h3><p>The frequency of 1 in each qubit is its risk index. The portfolio takes the six lowest.</p></div>
+  </div>
+  <p style="margin-top:20px">What sets the method apart: <strong>the angles come from a formula, not from an optimizer</strong>. There is no loop of many executions as in VQE or QAOA, and one qubit per asset makes it possible to reach 110 assets on a current processor.</p>
+</section>
+
+<section id="results">
+  <h2>Results on real hardware</h2>
+  <div class="tabla"><table>
+    <thead><tr><th>Experiment</th><th>Processor</th><th class="n">Qubits</th><th class="n">Average gap to the ideal</th></tr></thead>
+    <tbody>
+      <tr><td>Class, October 4, 2026</td><td><code>ibm_fez</code></td><td class="n">12</td><td class="n">0.015</td></tr>
+      <tr><td>Reference paper, June 27, 2026</td><td><code>ibm_fez</code></td><td class="n">110</td><td class="n">0.10</td></tr>
+    </tbody>
+  </table></div>
+  <p>The 12-qubit circuit was executed once, with 4,000 shots and 3 seconds of processor time. The portfolio built from the real result picks the same six assets as the ideal version.</p>
+  <h3 style="margin-top:28px">The portfolios, evaluated on 12 months the model never saw</h3>
+  <div class="tabla"><table>
+    <thead><tr><th>Portfolio</th><th class="n">Return</th><th class="n">Annual volatility</th><th class="n">Maximum drawdown</th></tr></thead>
+    <tbody>
+      <tr><td>Markowitz, minimum risk</td><td class="n">+20.8%</td><td class="n">9.6%</td><td class="n">−4.4%</td></tr>
+      <tr><td>Quantum circuit, real hardware</td><td class="n">+26.7%</td><td class="n">11.9%</td><td class="n">−9.6%</td></tr>
+      <tr><td>Classical diffusion model</td><td class="n">+24.0%</td><td class="n">12.1%</td><td class="n">−10.5%</td></tr>
+      <tr><td>SPY, the market</td><td class="n">+31.1%</td><td class="n">12.5%</td><td class="n">−8.9%</td></tr>
+    </tbody>
+  </table></div>
+  <p>The goal of the method is to lower risk, so the columns that matter are volatility and maximum drawdown.</p>
+</section>
+
+<section id="honesty">
+  <h2>What can and cannot be claimed</h2>
+  <ul class="claro">
+    <li><strong>The circuit runs on current hardware.</strong> With 12 qubits the real result almost matches the ideal one. With 110 qubits the noise grows and the overall risk ordering holds.</li>
+    <li><strong>There is no quantum advantage.</strong> These circuits can be simulated on a laptop, and a classical method such as Markowitz's achieves lower-risk portfolios.</li>
+    <li><strong>The value is in the validation method.</strong> The circuit is compared against its ideal version and against a classical model, and the next step is to use it inside quantum amplitude estimation.</li>
+  </ul>
+</section>
+
+<section id="material">
+  <h2>What the material includes</h2>
+  <div class="grid">
+    <div class="card"><h3>Qiskit notebook</h3><p>Eight sections, from Yahoo Finance prices and the Markowitz efficient frontier to VQE, the risk circuit and the final evaluation. It runs on simulators in about a minute.</p></div>
+    <div class="card"><h3>Slides</h3><p>Fourteen slides: modern portfolio theory, parametric circuits, VQE and QAOA, the method, why it does not start with Hadamard gates, and how to read the results.</p></div>
+    <div class="card"><h3>Real data</h3><p>The result of the 12-qubit circuit on <code>ibm_fez</code>, with its 4,000 shots, and the risk indices from the 110-qubit experiment.</p></div>
+  </div>
+</section>
+
+<section id="run">
+  <h2>How to run it</h2>
+<pre><code>git clone https://github.com/314-ia/quantum-portfolio-risk.git
+cd quantum-portfolio-risk/CACIC
+python3 -m venv .venv
+.venv/bin/pip install -r notebook/requirements.txt
+.venv/bin/jupyter lab notebook/Finanzas_Cuanticas_CACIC2026.ipynb</code></pre>
+  <p>The pinned versions require Python 3.12 or newer. Everything quantum runs on simulators, except one optional step that sends the circuit to a real IBM computer with a free account. Prices are downloaded from Yahoo Finance at run time.</p>
+</section>
+
+<section id="cite">
+  <h2>How to cite</h2>
+<pre><code>@misc{brana2026finanzascuanticas,
+  author       = {Brana, Juan Pablo and Fernandez, Alejandro and Litterio, Alejandra M. J.},
+  title        = {Aplicaciones Financieras en la Computaci{\'o}n Cu{\'a}ntica},
+  year         = {2026},
+  howpublished = {Material del curso, XXX Escuela Internacional de Inform{\'a}tica, CACIC 2026},
+  url          = {https://github.com/314-ia/quantum-portfolio-risk}
+}</code></pre>
+  <p>The method is the one in the paper <em>A Parametric Quantum Circuit for Portfolio Risk Assessment at 110 Qubits: Three-Way Validation and a Demonstrator of the Path to Advantage via Amplitude Estimation</em>, by J. P. Braña, A. M. J. Litterio, A. Fernández et al., accepted at QCQSE-Chile, JCC 2026.</p>
+</section>
+
+<section id="authors">
+  <h2>Authors</h2>
+  <ul class="claro">
+    <li>Juan Pablo Braña, CAETI, Universidad Abierta Interamericana</li>
+    <li>Alejandro Fernández, LIFIA, Universidad Nacional de La Plata</li>
+    <li>Alejandra M. J. Litterio, CAETI, Universidad Abierta Interamericana</li>
+  </ul>
+  <p style="margin-top:18px">Course material taught at the XXX International School of Informatics of CACIC 2026, at UTN Facultad Regional Concepción del Uruguay, Argentina, October 5 to 9, 2026.</p>
+</section>
+</main>
+
+<footer>
+  <p class="nota">Educational and research material. Nothing here is investment advice.</p>
+  <p><a href="https://github.com/314-ia/quantum-portfolio-risk/blob/main/LICENSE">MIT</a> license. Market prices come from Yahoo Finance and are not redistributed: the notebook downloads them at run time. Code and material at <a href="https://github.com/314-ia/quantum-portfolio-risk">github.com/314-ia/quantum-portfolio-risk</a>.</p>
+</footer>
+</div>
+</body>
+</html>

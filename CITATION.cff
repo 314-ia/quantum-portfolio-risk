@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: "Aplicaciones Financieras en la Computación Cuántica"
+message: "Para citar este material del curso, usar estos datos."
+type: software
+authors:
+  - family-names: "Brana"
+    given-names: "Juan Pablo"
+    affiliation: "CAETI, Universidad Abierta Interamericana"
+  - family-names: "Fernandez"
+    given-names: "Alejandro"
+    affiliation: "LIFIA, Universidad Nacional de La Plata"
+  - family-names: "Litterio"
+    given-names: "Alejandra M. J."
+    affiliation: "CAETI, Universidad Abierta Interamericana"
+repository-code: "https://github.com/314-ia/quantum-portfolio-risk"
+url: "https://314-ia.github.io/quantum-portfolio-risk/"
+abstract: >-
+  Material del curso: diapositivas y un notebook de Qiskit que arma carteras de inversión con precios
+  reales de mercado y recorre el camino de la frontera eficiente de Markowitz a un circuito cuántico
+  paramétrico ejecutado en una computadora cuántica de IBM.
+license: MIT
+date-released: "2026-10-04"
+keywords:
+  - "computación cuántica"
+  - "quantum computing"
+  - "Qiskit"
+  - "IBM Quantum"
+  - "quantum finance"
+  - "portfolio risk"
+  - "parametric quantum circuits"
+  - "finanzas cuantitativas"

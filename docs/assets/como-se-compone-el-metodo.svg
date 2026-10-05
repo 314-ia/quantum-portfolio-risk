@@ -1,0 +1,247 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="440" viewBox="0 0 1000 440" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">Cómo se compone el método</title>
+<desc id="d">Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY agregan el contagio entre activos correlacionados. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.</desc>
+<defs>
+  <radialGradient id="fondo" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="#16304f"/><stop offset="1" stop-color="#0b1626"/></radialGradient>
+  <linearGradient id="haz" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F7F5EF" stop-opacity="0"/><stop offset=".5" stop-color="#F7F5EF" stop-opacity=".95"/><stop offset="1" stop-color="#F7F5EF" stop-opacity="0"/></linearGradient>
+  <filter id="brillo" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="marco"><rect width="1000" height="440" rx="14"/></clipPath>
+  <pattern id="trama" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#7FB7E6" opacity=".10"/></pattern>
+</defs>
+<style>
+  .c { animation-duration: 18s; animation-iteration-count: infinite; animation-fill-mode: both; animation-timing-function: ease-in-out; }
+  .qubit { animation-name: aparecer; }
+  .flecha { transform: rotate(var(--b)); animation-name: girar; }
+  .enlace { opacity: .42; animation-name: enlazar; }
+  .foton { opacity: 0; animation-name: viajar; animation-timing-function: linear; }
+  .barrido { opacity: 0; animation-name: barrer; animation-timing-function: linear; }
+  .barra { animation-name: crecer; }
+  .valor { animation-name: mostrar; }
+  .resultado { animation-name: revelar; }
+  .resto { opacity: .3; animation-name: atenuar; }
+  .marca { animation-name: elegir; }
+  .leyenda { opacity: 0; animation-name: none; }
+  .l1 { animation-name: leer1; } .l2 { animation-name: leer2; } .l3 { animation-name: leer3; } .l4 { animation-name: leer4; }
+  .l5 { opacity: 1; animation-name: leer5; }
+  .mota { animation: titilar 5s ease-in-out infinite; }
+  .ondas { opacity: 0; animation-name: colapsar; }
+  .onda { animation: fluir 9s linear infinite; }
+  @keyframes aparecer { 0% { opacity: 0 } 6%, 94% { opacity: 1 } 100% { opacity: 0 } }
+  @keyframes girar { 0%, 10% { transform: rotate(0deg) } 26%, 36% { transform: rotate(var(--a)) } 50%, 94% { transform: rotate(var(--b)) } 100% { transform: rotate(0deg) } }
+  @keyframes enlazar { 0%, 30% { opacity: 0 } 33%, 93% { opacity: .42 } 97%, 100% { opacity: 0 } }
+  @keyframes viajar { 0%, 31.9% { opacity: 0; stroke-dashoffset: var(--s) } 32% { opacity: 1; stroke-dashoffset: var(--s) } 40% { opacity: 1; stroke-dashoffset: var(--f) } 40.1% { opacity: 1; stroke-dashoffset: var(--s) } 48% { opacity: 1; stroke-dashoffset: var(--f) } 48.1%, 100% { opacity: 0; stroke-dashoffset: var(--f) } }
+  @keyframes barrer { 0%, 53.9% { opacity: 0; transform: translateX(34px) } 54% { opacity: 1; transform: translateX(34px) } 66% { opacity: 1; transform: translateX(966px) } 67%, 100% { opacity: 0; transform: translateX(966px) } }
+  @keyframes crecer { 0%, 54% { transform: scaleY(0) } 58%, 100% { transform: scaleY(1) } }
+  @keyframes mostrar { 0%, 58% { opacity: 0 } 60%, 100% { opacity: 1 } }
+  @keyframes revelar { 0%, 53% { opacity: 0 } 54.5%, 92% { opacity: 1 } 96%, 100% { opacity: 0 } }
+  @keyframes atenuar { 0%, 70% { opacity: 1 } 74%, 92% { opacity: .3 } 96%, 100% { opacity: 1 } }
+  @keyframes elegir { 0%, 70% { opacity: 0 } 74%, 92% { opacity: 1 } 95%, 100% { opacity: 0 } }
+  @keyframes leer1 { 0% { opacity: 0 } 2%, 8% { opacity: 1 } 10%, 100% { opacity: 0 } }
+  @keyframes leer2 { 0%, 10% { opacity: 0 } 12%, 29% { opacity: 1 } 31%, 100% { opacity: 0 } }
+  @keyframes leer3 { 0%, 31% { opacity: 0 } 33%, 50% { opacity: 1 } 52%, 100% { opacity: 0 } }
+  @keyframes leer4 { 0%, 52% { opacity: 0 } 54%, 68% { opacity: 1 } 70%, 100% { opacity: 0 } }
+  @keyframes leer5 { 0%, 70% { opacity: 0 } 72%, 92% { opacity: 1 } 94%, 100% { opacity: 0 } }
+  @keyframes colapsar { 0% { opacity: 0 } 6%, 54% { opacity: 1 } 66%, 100% { opacity: 0 } }
+  @keyframes fluir { from { transform: translateX(0) } to { transform: translateX(-240px) } }
+  @keyframes titilar { 0%, 100% { opacity: .15 } 50% { opacity: .7 } }
+  @media (prefers-reduced-motion: reduce) { .c, .mota, .onda { animation: none !important } }
+</style>
+<rect width="1000" height="440" rx="14" fill="url(#fondo)"/>
+<rect width="1000" height="440" rx="14" fill="url(#trama)"/>
+<rect x=".5" y=".5" width="999" height="439" rx="14" fill="none" stroke="#28405f"/>
+<text x="34" y="36" font-size="12.5" font-weight="600" letter-spacing="2.4" fill="#7FB7E6">CÓMO SE COMPONE EL MÉTODO</text>
+<text x="966" y="36" font-size="12.5" text-anchor="end" fill="#8FA5BD">12 activos reales · 12 qubits · resultado medido en ibm_fez</text>
+<circle class="mota" cx="331" cy="101" r="1.4" fill="#BFD9F2" style="animation-delay:-0.2s;animation-duration:6.4s"/>
+<circle class="mota" cx="110" cy="243" r="1.4" fill="#BFD9F2" style="animation-delay:-1.1s;animation-duration:3.8s"/>
+<circle class="mota" cx="421" cy="131" r="1.4" fill="#BFD9F2" style="animation-delay:-2.1s;animation-duration:6.4s"/>
+<circle class="mota" cx="139" cy="125" r="1.4" fill="#BFD9F2" style="animation-delay:-2.9s;animation-duration:3.7s"/>
+<circle class="mota" cx="582" cy="68" r="0.9" fill="#BFD9F2" style="animation-delay:-0.2s;animation-duration:6.5s"/>
+<circle class="mota" cx="298" cy="99" r="0.9" fill="#BFD9F2" style="animation-delay:-2.9s;animation-duration:5.5s"/>
+<circle class="mota" cx="675" cy="86" r="1.4" fill="#BFD9F2" style="animation-delay:-3.2s;animation-duration:4.8s"/>
+<circle class="mota" cx="546" cy="73" r="0.9" fill="#BFD9F2" style="animation-delay:-3.1s;animation-duration:5.2s"/>
+<circle class="mota" cx="530" cy="307" r="1.1" fill="#BFD9F2" style="animation-delay:-2.9s;animation-duration:5.1s"/>
+<circle class="mota" cx="308" cy="313" r="1.4" fill="#BFD9F2" style="animation-delay:-3.9s;animation-duration:3.8s"/>
+<circle class="mota" cx="308" cy="214" r="1.1" fill="#BFD9F2" style="animation-delay:-3.6s;animation-duration:4.5s"/>
+<circle class="mota" cx="961" cy="91" r="1.1" fill="#BFD9F2" style="animation-delay:-0.8s;animation-duration:4.7s"/>
+<circle class="mota" cx="916" cy="190" r="1.4" fill="#BFD9F2" style="animation-delay:-0.4s;animation-duration:5.5s"/>
+<circle class="mota" cx="778" cy="320" r="1.1" fill="#BFD9F2" style="animation-delay:-3.5s;animation-duration:5.6s"/>
+<circle class="mota" cx="577" cy="202" r="0.9" fill="#BFD9F2" style="animation-delay:-4.7s;animation-duration:5.2s"/>
+<circle class="mota" cx="658" cy="72" r="1.4" fill="#BFD9F2" style="animation-delay:-1.5s;animation-duration:5.5s"/>
+<circle class="mota" cx="674" cy="198" r="1.4" fill="#BFD9F2" style="animation-delay:-1.9s;animation-duration:5.8s"/>
+<circle class="mota" cx="42" cy="203" r="0.9" fill="#BFD9F2" style="animation-delay:-3.1s;animation-duration:5.2s"/>
+<g class="c ondas" clip-path="url(#marco)">
+<path class="onda" d="M-10,257.9 L0,262.0 L10,266.1 L20,270.0 L30,273.3 L40,275.9 L50,277.5 L60,278.0 L70,277.5 L80,275.9 L90,273.3 L100,270.0 L110,266.1 L120,262.0 L130,257.9 L140,254.0 L150,250.7 L160,248.1 L170,246.5 L180,246.0 L190,246.5 L200,248.1 L210,250.7 L220,254.0 L230,257.9 L240,262.0 L250,266.1 L260,270.0 L270,273.3 L280,275.9 L290,277.5 L300,278.0 L310,277.5 L320,275.9 L330,273.3 L340,270.0 L350,266.1 L360,262.0 L370,257.9 L380,254.0 L390,250.7 L400,248.1 L410,246.5 L420,246.0 L430,246.5 L440,248.1 L450,250.7 L460,254.0 L470,257.9 L480,262.0 L490,266.1 L500,270.0 L510,273.3 L520,275.9 L530,277.5 L540,278.0 L550,277.5 L560,275.9 L570,273.3 L580,270.0 L590,266.1 L600,262.0 L610,257.9 L620,254.0 L630,250.7 L640,248.1 L650,246.5 L660,246.0 L670,246.5 L680,248.1 L690,250.7 L700,254.0 L710,257.9 L720,262.0 L730,266.1 L740,270.0 L750,273.3 L760,275.9 L770,277.5 L780,278.0 L790,277.5 L800,275.9 L810,273.3 L820,270.0 L830,266.1 L840,262.0 L850,257.9 L860,254.0 L870,250.7 L880,248.1 L890,246.5 L900,246.0 L910,246.5 L920,248.1 L930,250.7 L940,254.0 L950,257.9 L960,262.0 L970,266.1 L980,270.0 L990,273.3 L1000,275.9 L1010,277.5 L1020,278.0 L1030,277.5 L1040,275.9 L1050,273.3 L1060,270.0 L1070,266.1 L1080,262.0 L1090,257.9 L1100,254.0 L1110,250.7 L1120,248.1 L1130,246.5 L1140,246.0 L1150,246.5 L1160,248.1 L1170,250.7 L1180,254.0 L1190,257.9 L1200,262.0 L1210,266.1 L1220,270.0 L1230,273.3 L1240,275.9 L1250,277.5" fill="none" stroke="#7FB7E6" stroke-width="1.6" opacity="0.2" style="animation-duration:9s"/>
+<path class="onda" d="M-10,313.8 L0,313.8 L10,312.3 L20,309.5 L30,305.4 L40,300.5 L50,294.9 L60,289.2 L70,283.6 L80,278.6 L90,274.6 L100,271.7 L110,270.2 L120,270.2 L130,271.7 L140,274.5 L150,278.6 L160,283.5 L170,289.1 L180,294.8 L190,300.4 L200,305.4 L210,309.4 L220,312.3 L230,313.8 L240,313.8 L250,312.3 L260,309.5 L270,305.4 L280,300.5 L290,294.9 L300,289.2 L310,283.6 L320,278.6 L330,274.6 L340,271.7 L350,270.2 L360,270.2 L370,271.7 L380,274.5 L390,278.6 L400,283.5 L410,289.1 L420,294.8 L430,300.4 L440,305.4 L450,309.4 L460,312.3 L470,313.8 L480,313.8 L490,312.3 L500,309.5 L510,305.4 L520,300.5 L530,294.9 L540,289.2 L550,283.6 L560,278.6 L570,274.6 L580,271.7 L590,270.2 L600,270.2 L610,271.7 L620,274.5 L630,278.6 L640,283.5 L650,289.1 L660,294.8 L670,300.4 L680,305.4 L690,309.4 L700,312.3 L710,313.8 L720,313.8 L730,312.3 L740,309.5 L750,305.4 L760,300.5 L770,294.9 L780,289.2 L790,283.6 L800,278.6 L810,274.6 L820,271.7 L830,270.2 L840,270.2 L850,271.7 L860,274.5 L870,278.6 L880,283.5 L890,289.1 L900,294.8 L910,300.4 L920,305.4 L930,309.4 L940,312.3 L950,313.8 L960,313.8 L970,312.3 L980,309.5 L990,305.4 L1000,300.5 L1010,294.9 L1020,289.2 L1030,283.6 L1040,278.6 L1050,274.6 L1060,271.7 L1070,270.2 L1080,270.2 L1090,271.7 L1100,274.5 L1110,278.6 L1120,283.5 L1130,289.1 L1140,294.8 L1150,300.4 L1160,305.4 L1170,309.4 L1180,312.3 L1190,313.8 L1200,313.8 L1210,312.3 L1220,309.5 L1230,305.4 L1240,300.5 L1250,294.9" fill="none" stroke="#7FB7E6" stroke-width="1.6" opacity="0.13" style="animation-duration:13s"/>
+<path class="onda" d="M-10,325.9 L0,322.5 L10,319.2 L20,316.0 L30,313.2 L40,311.0 L50,309.6 L60,309.0 L70,309.3 L80,310.5 L90,312.4 L100,315.0 L110,318.1 L120,321.5 L130,324.8 L140,328.0 L150,330.8 L160,333.0 L170,334.4 L180,335.0 L190,334.7 L200,333.5 L210,331.6 L220,329.0 L230,325.9 L240,322.5 L250,319.2 L260,316.0 L270,313.2 L280,311.0 L290,309.6 L300,309.0 L310,309.3 L320,310.5 L330,312.4 L340,315.0 L350,318.1 L360,321.5 L370,324.8 L380,328.0 L390,330.8 L400,333.0 L410,334.4 L420,335.0 L430,334.7 L440,333.5 L450,331.6 L460,329.0 L470,325.9 L480,322.5 L490,319.2 L500,316.0 L510,313.2 L520,311.0 L530,309.6 L540,309.0 L550,309.3 L560,310.5 L570,312.4 L580,315.0 L590,318.1 L600,321.5 L610,324.8 L620,328.0 L630,330.8 L640,333.0 L650,334.4 L660,335.0 L670,334.7 L680,333.5 L690,331.6 L700,329.0 L710,325.9 L720,322.5 L730,319.2 L740,316.0 L750,313.2 L760,311.0 L770,309.6 L780,309.0 L790,309.3 L800,310.5 L810,312.4 L820,315.0 L830,318.1 L840,321.5 L850,324.8 L860,328.0 L870,330.8 L880,333.0 L890,334.4 L900,335.0 L910,334.7 L920,333.5 L930,331.6 L940,329.0 L950,325.9 L960,322.5 L970,319.2 L980,316.0 L990,313.2 L1000,311.0 L1010,309.6 L1020,309.0 L1030,309.3 L1040,310.5 L1050,312.4 L1060,315.0 L1070,318.1 L1080,321.5 L1090,324.8 L1100,328.0 L1110,330.8 L1120,333.0 L1130,334.4 L1140,335.0 L1150,334.7 L1160,333.5 L1170,331.6 L1180,329.0 L1190,325.9 L1200,322.5 L1210,319.2 L1220,316.0 L1230,313.2 L1240,311.0 L1250,309.6" fill="none" stroke="#F2A65A" stroke-width="1.6" opacity="0.14" style="animation-duration:11s"/>
+</g>
+<g font-size="10" fill="#8FA5BD" text-anchor="middle"><text x="16" y="107">0</text><text x="16" y="168">1</text><path d="M22,103 h5 M22,165 h5" stroke="#8FA5BD" stroke-width=".8"/></g>
+<path class="c enlace" d="M152,169 Q180,216 208,169" fill="none" stroke="#F2A65A" stroke-width="1.2" stroke-dasharray="2 4"/>
+<path class="c foton" d="M152,169 L152.7,170.4 L153.4,171.8 L153.9,173.2 L154.5,174.6 L155.1,175.9 L155.9,177 L156.9,178 L158,178.8 L159.3,179.4 L160.7,179.9 L162.1,180.3 L163.3,180.8 L164.4,181.3 L165.2,182.1 L165.7,183.1 L165.9,184.3 L166,185.8 L166,187.5 L166,189.1 L166.2,190.7 L166.7,191.9 L167.4,192.8 L168.4,193.2 L169.7,193 L171.2,192.3 L172.6,191.3 L174,190.1 L175.3,188.9 L176.3,187.9 L177.1,187.4 L177.7,187.4 L178.2,188 L178.7,189.2 L179.3,190.7 L180,192.5 L180.9,194.2 L181.9,195.7 L183,196.6 L184.1,197 L185.1,196.6 L185.9,195.7 L186.5,194.2 L186.8,192.4 L187,190.6 L187.2,188.8 L187.3,187.4 L187.6,186.3 L188.2,185.7 L189.1,185.5 L190.2,185.7 L191.6,186.1 L193.2,186.5 L194.8,186.8 L196.3,186.8 L197.7,186.6 L198.8,186 L199.6,185.1 L200.1,183.9 L200.5,182.6 L200.7,181.1 L200.9,179.6 L201.2,178.2 L201.7,176.9 L202.3,175.7 L203.1,174.6 L204.1,173.6 L205.1,172.5 L206.2,171.5 L207.1,170.3 L208,169" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="35.5 134.2" style="--s:35.5;--f:-98.7;animation-delay:0s"/>
+<path class="c foton" d="M208,169 L207.1,170.3 L206.2,171.5 L205.1,172.5 L204.1,173.6 L203.1,174.6 L202.3,175.7 L201.7,176.9 L201.2,178.2 L200.9,179.6 L200.7,181.1 L200.5,182.6 L200.1,183.9 L199.6,185.1 L198.8,186 L197.7,186.6 L196.3,186.8 L194.8,186.8 L193.2,186.5 L191.6,186.1 L190.2,185.7 L189.1,185.5 L188.2,185.7 L187.6,186.3 L187.3,187.4 L187.2,188.8 L187,190.6 L186.8,192.4 L186.5,194.2 L185.9,195.7 L185.1,196.6 L184.1,197 L183,196.6 L181.9,195.7 L180.9,194.2 L180,192.5 L179.3,190.7 L178.7,189.2 L178.2,188 L177.7,187.4 L177.1,187.4 L176.3,187.9 L175.3,188.9 L174,190.1 L172.6,191.3 L171.2,192.3 L169.7,193 L168.4,193.2 L167.4,192.8 L166.7,191.9 L166.2,190.7 L166,189.1 L166,187.5 L166,185.8 L165.9,184.3 L165.7,183.1 L165.2,182.1 L164.4,181.3 L163.3,180.8 L162.1,180.3 L160.7,179.9 L159.3,179.4 L158,178.8 L156.9,178 L155.9,177 L155.1,175.9 L154.5,174.6 L153.9,173.2 L153.4,171.8 L152.7,170.4 L152,169" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="35.5 134.2" style="--s:35.5;--f:-98.7;animation-delay:0.55s"/>
+<path class="c enlace" d="M552,169 Q580,216 608,169" fill="none" stroke="#F2A65A" stroke-width="1.2" stroke-dasharray="2 4"/>
+<path class="c foton" d="M552,169 L552.7,170.4 L553.4,171.8 L553.9,173.2 L554.5,174.6 L555.1,175.9 L555.9,177 L556.9,178 L558,178.8 L559.3,179.4 L560.7,179.9 L562.1,180.3 L563.3,180.8 L564.4,181.3 L565.2,182.1 L565.7,183.1 L565.9,184.3 L566,185.8 L566,187.5 L566,189.1 L566.2,190.7 L566.7,191.9 L567.4,192.8 L568.4,193.2 L569.7,193 L571.2,192.3 L572.6,191.3 L574,190.1 L575.3,188.9 L576.3,187.9 L577.1,187.4 L577.7,187.4 L578.2,188 L578.7,189.2 L579.3,190.7 L580,192.5 L580.9,194.2 L581.9,195.7 L583,196.6 L584.1,197 L585.1,196.6 L585.9,195.7 L586.5,194.2 L586.8,192.4 L587,190.6 L587.2,188.8 L587.3,187.4 L587.6,186.3 L588.2,185.7 L589.1,185.5 L590.2,185.7 L591.6,186.1 L593.2,186.5 L594.8,186.8 L596.3,186.8 L597.7,186.6 L598.8,186 L599.6,185.1 L600.1,183.9 L600.5,182.6 L600.7,181.1 L600.9,179.6 L601.2,178.2 L601.7,176.9 L602.3,175.7 L603.1,174.6 L604.1,173.6 L605.1,172.5 L606.2,171.5 L607.1,170.3 L608,169" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="35.5 134.2" style="--s:35.5;--f:-98.7;animation-delay:0s"/>
+<path class="c foton" d="M608,169 L607.1,170.3 L606.2,171.5 L605.1,172.5 L604.1,173.6 L603.1,174.6 L602.3,175.7 L601.7,176.9 L601.2,178.2 L600.9,179.6 L600.7,181.1 L600.5,182.6 L600.1,183.9 L599.6,185.1 L598.8,186 L597.7,186.6 L596.3,186.8 L594.8,186.8 L593.2,186.5 L591.6,186.1 L590.2,185.7 L589.1,185.5 L588.2,185.7 L587.6,186.3 L587.3,187.4 L587.2,188.8 L587,190.6 L586.8,192.4 L586.5,194.2 L585.9,195.7 L585.1,196.6 L584.1,197 L583,196.6 L581.9,195.7 L580.9,194.2 L580,192.5 L579.3,190.7 L578.7,189.2 L578.2,188 L577.7,187.4 L577.1,187.4 L576.3,187.9 L575.3,188.9 L574,190.1 L572.6,191.3 L571.2,192.3 L569.7,193 L568.4,193.2 L567.4,192.8 L566.7,191.9 L566.2,190.7 L566,189.1 L566,187.5 L566,185.8 L565.9,184.3 L565.7,183.1 L565.2,182.1 L564.4,181.3 L563.3,180.8 L562.1,180.3 L560.7,179.9 L559.3,179.4 L558,178.8 L556.9,178 L555.9,177 L555.1,175.9 L554.5,174.6 L553.9,173.2 L553.4,171.8 L552.7,170.4 L552,169" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="35.5 134.2" style="--s:35.5;--f:-98.7;animation-delay:0.55s"/>
+<path class="c enlace" d="M712,169 Q740,216 768,169" fill="none" stroke="#F2A65A" stroke-width="1.2" stroke-dasharray="2 4"/>
+<path class="c foton" d="M712,169 L712.7,170.4 L713.4,171.8 L713.9,173.2 L714.5,174.6 L715.1,175.9 L715.9,177 L716.9,178 L718,178.8 L719.3,179.4 L720.7,179.9 L722.1,180.3 L723.3,180.8 L724.4,181.3 L725.2,182.1 L725.7,183.1 L725.9,184.3 L726,185.8 L726,187.5 L726,189.1 L726.2,190.7 L726.7,191.9 L727.4,192.8 L728.4,193.2 L729.7,193 L731.2,192.3 L732.6,191.3 L734,190.1 L735.3,188.9 L736.3,187.9 L737.1,187.4 L737.7,187.4 L738.2,188 L738.7,189.2 L739.3,190.7 L740,192.5 L740.9,194.2 L741.9,195.7 L743,196.6 L744.1,197 L745.1,196.6 L745.9,195.7 L746.5,194.2 L746.8,192.4 L747,190.6 L747.2,188.8 L747.3,187.4 L747.6,186.3 L748.2,185.7 L749.1,185.5 L750.2,185.7 L751.6,186.1 L753.2,186.5 L754.8,186.8 L756.3,186.8 L757.7,186.6 L758.8,186 L759.6,185.1 L760.1,183.9 L760.5,182.6 L760.7,181.1 L760.9,179.6 L761.2,178.2 L761.7,176.9 L762.3,175.7 L763.1,174.6 L764.1,173.6 L765.1,172.5 L766.2,171.5 L767.1,170.3 L768,169" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="35.5 134.2" style="--s:35.5;--f:-98.7;animation-delay:0s"/>
+<path class="c foton" d="M768,169 L767.1,170.3 L766.2,171.5 L765.1,172.5 L764.1,173.6 L763.1,174.6 L762.3,175.7 L761.7,176.9 L761.2,178.2 L760.9,179.6 L760.7,181.1 L760.5,182.6 L760.1,183.9 L759.6,185.1 L758.8,186 L757.7,186.6 L756.3,186.8 L754.8,186.8 L753.2,186.5 L751.6,186.1 L750.2,185.7 L749.1,185.5 L748.2,185.7 L747.6,186.3 L747.3,187.4 L747.2,188.8 L747,190.6 L746.8,192.4 L746.5,194.2 L745.9,195.7 L745.1,196.6 L744.1,197 L743,196.6 L741.9,195.7 L740.9,194.2 L740,192.5 L739.3,190.7 L738.7,189.2 L738.2,188 L737.7,187.4 L737.1,187.4 L736.3,187.9 L735.3,188.9 L734,190.1 L732.6,191.3 L731.2,192.3 L729.7,193 L728.4,193.2 L727.4,192.8 L726.7,191.9 L726.2,190.7 L726,189.1 L726,187.5 L726,185.8 L725.9,184.3 L725.7,183.1 L725.2,182.1 L724.4,181.3 L723.3,180.8 L722.1,180.3 L720.7,179.9 L719.3,179.4 L718,178.8 L716.9,178 L715.9,177 L715.1,175.9 L714.5,174.6 L713.9,173.2 L713.4,171.8 L712.7,170.4 L712,169" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="35.5 134.2" style="--s:35.5;--f:-98.7;animation-delay:0.55s"/>
+<path class="c enlace" d="M872,169 Q900,216 928,169" fill="none" stroke="#F2A65A" stroke-width="1.2" stroke-dasharray="2 4"/>
+<path class="c foton" d="M872,169 L872.7,170.4 L873.4,171.8 L873.9,173.2 L874.5,174.6 L875.1,175.9 L875.9,177 L876.9,178 L878,178.8 L879.3,179.4 L880.7,179.9 L882.1,180.3 L883.3,180.8 L884.4,181.3 L885.2,182.1 L885.7,183.1 L885.9,184.3 L886,185.8 L886,187.5 L886,189.1 L886.2,190.7 L886.7,191.9 L887.4,192.8 L888.4,193.2 L889.7,193 L891.2,192.3 L892.6,191.3 L894,190.1 L895.3,188.9 L896.3,187.9 L897.1,187.4 L897.7,187.4 L898.2,188 L898.7,189.2 L899.3,190.7 L900,192.5 L900.9,194.2 L901.9,195.7 L903,196.6 L904.1,197 L905.1,196.6 L905.9,195.7 L906.5,194.2 L906.8,192.4 L907,190.6 L907.2,188.8 L907.3,187.4 L907.6,186.3 L908.2,185.7 L909.1,185.5 L910.2,185.7 L911.6,186.1 L913.2,186.5 L914.8,186.8 L916.3,186.8 L917.7,186.6 L918.8,186 L919.6,185.1 L920.1,183.9 L920.5,182.6 L920.7,181.1 L920.9,179.6 L921.2,178.2 L921.7,176.9 L922.3,175.7 L923.1,174.6 L924.1,173.6 L925.1,172.5 L926.2,171.5 L927.1,170.3 L928,169" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="35.5 134.2" style="--s:35.5;--f:-98.7;animation-delay:0s"/>
+<path class="c foton" d="M928,169 L927.1,170.3 L926.2,171.5 L925.1,172.5 L924.1,173.6 L923.1,174.6 L922.3,175.7 L921.7,176.9 L921.2,178.2 L920.9,179.6 L920.7,181.1 L920.5,182.6 L920.1,183.9 L919.6,185.1 L918.8,186 L917.7,186.6 L916.3,186.8 L914.8,186.8 L913.2,186.5 L911.6,186.1 L910.2,185.7 L909.1,185.5 L908.2,185.7 L907.6,186.3 L907.3,187.4 L907.2,188.8 L907,190.6 L906.8,192.4 L906.5,194.2 L905.9,195.7 L905.1,196.6 L904.1,197 L903,196.6 L901.9,195.7 L900.9,194.2 L900,192.5 L899.3,190.7 L898.7,189.2 L898.2,188 L897.7,187.4 L897.1,187.4 L896.3,187.9 L895.3,188.9 L894,190.1 L892.6,191.3 L891.2,192.3 L889.7,193 L888.4,193.2 L887.4,192.8 L886.7,191.9 L886.2,190.7 L886,189.1 L886,187.5 L886,185.8 L885.9,184.3 L885.7,183.1 L885.2,182.1 L884.4,181.3 L883.3,180.8 L882.1,180.3 L880.7,179.9 L879.3,179.4 L878,178.8 L876.9,178 L875.9,177 L875.1,175.9 L874.5,174.6 L873.9,173.2 L873.4,171.8 L872.7,170.4 L872,169" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="35.5 134.2" style="--s:35.5;--f:-98.7;animation-delay:0.55s"/>
+<g class="c qubit" style="animation-delay:0.00s">
+  <text x="60" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">AAPL</text>
+  <circle cx="60" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 60 134)"><path d="M23,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="2.20s" begin="-0.00s" repeatCount="indefinite" path="M23,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:60px 134px;--a:65.4deg;--b:65.4deg">
+    <path d="M60,134 V112" stroke="#9fb2bf" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M55,113.5 L60,104 L65,113.5 Z" fill="#9fb2bf"/></g>
+  <circle cx="60" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="47" y="341.9" width="26" height="30.1" rx="3" fill="#9fb2bf" style="transform-origin:60px 372px;animation-delay:0.06s"/>
+<text class="c valor" x="60" y="334.9" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.06s">0,28</text></g>
+<g class="c marca"><rect x="44.5" y="339.4" width="31" height="32.6" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="60" cy="385" r="3.4" fill="#F7F5EF"/></g>
+<g class="c resto"><g class="c qubit" style="animation-delay:0.07s">
+  <text x="140" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">MSFT</text>
+  <circle cx="140" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 140 134)"><path d="M103,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="3.35s" begin="-0.37s" repeatCount="indefinite" path="M103,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:140px 134px;--a:58.1deg;--b:90.2deg">
+    <path d="M140,134 V112" stroke="#b5afa4" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M135,113.5 L140,104 L145,113.5 Z" fill="#b5afa4"/></g>
+  <circle cx="140" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="127" y="321.5" width="26" height="50.5" rx="3" fill="#b5afa4" style="transform-origin:140px 372px;animation-delay:0.25s"/>
+<text class="c valor" x="140" y="314.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.25s">0,47</text></g></g>
+<g class="c resto"><g class="c qubit" style="animation-delay:0.14s">
+  <text x="220" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">AMZN</text>
+  <circle cx="220" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 220 134)"><path d="M183,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="2.89s" begin="-0.74s" repeatCount="indefinite" path="M183,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:220px 134px;--a:73.6deg;--b:91.1deg">
+    <path d="M220,134 V112" stroke="#b8afa0" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M215,113.5 L220,104 L225,113.5 Z" fill="#b8afa0"/></g>
+  <circle cx="220" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="207" y="318.3" width="26" height="53.7" rx="3" fill="#b8afa0" style="transform-origin:220px 372px;animation-delay:0.43s"/>
+<text class="c valor" x="220" y="311.3" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.43s">0,50</text></g></g>
+<g class="c resto"><g class="c qubit" style="animation-delay:0.21s">
+  <text x="300" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">NVDA</text>
+  <circle cx="300" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 300 134)"><path d="M263,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="2.43s" begin="-1.11s" repeatCount="indefinite" path="M263,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:300px 134px;--a:112.6deg;--b:112.6deg">
+    <path d="M300,134 V112" stroke="#cdab87" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M295,113.5 L300,104 L305,113.5 Z" fill="#cdab87"/></g>
+  <circle cx="300" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="287" y="298.5" width="26" height="73.5" rx="3" fill="#cdab87" style="transform-origin:300px 372px;animation-delay:0.62s"/>
+<text class="c valor" x="300" y="291.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.62s">0,68</text></g></g>
+<g class="c resto"><g class="c qubit" style="animation-delay:0.28s">
+  <text x="380" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">TSLA</text>
+  <circle cx="380" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 380 134)"><path d="M343,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="3.58s" begin="-1.48s" repeatCount="indefinite" path="M343,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:380px 134px;--a:154.2deg;--b:154.2deg">
+    <path d="M380,134 V112" stroke="#eba762" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M375,113.5 L380,104 L385,113.5 Z" fill="#eba762"/></g>
+  <circle cx="380" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="367" y="270.2" width="26" height="101.8" rx="3" fill="#eba762" style="transform-origin:380px 372px;animation-delay:0.80s"/>
+<text class="c valor" x="380" y="263.2" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.80s">0,94</text></g></g>
+<g class="c resto"><g class="c qubit" style="animation-delay:0.35s">
+  <text x="460" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">MELI</text>
+  <circle cx="460" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 460 134)"><path d="M423,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="3.12s" begin="-1.85s" repeatCount="indefinite" path="M423,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:460px 134px;--a:99.8deg;--b:99.8deg">
+    <path d="M460,134 V112" stroke="#c0ad97" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M455,113.5 L460,104 L465,113.5 Z" fill="#c0ad97"/></g>
+  <circle cx="460" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="447" y="310.8" width="26" height="61.2" rx="3" fill="#c0ad97" style="transform-origin:460px 372px;animation-delay:0.99s"/>
+<text class="c valor" x="460" y="303.8" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:0.99s">0,57</text></g></g>
+<g class="c qubit" style="animation-delay:0.42s">
+  <text x="540" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">JPM</text>
+  <circle cx="540" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 540 134)"><path d="M503,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="2.66s" begin="-2.22s" repeatCount="indefinite" path="M503,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:540px 134px;--a:0.0deg;--b:36.1deg">
+    <path d="M540,134 V112" stroke="#8bb5d8" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M535,113.5 L540,104 L545,113.5 Z" fill="#8bb5d8"/></g>
+  <circle cx="540" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="527" y="361.1" width="26" height="10.9" rx="3" fill="#8bb5d8" style="transform-origin:540px 372px;animation-delay:1.17s"/>
+<text class="c valor" x="540" y="354.1" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.17s">0,10</text></g>
+<g class="c marca"><rect x="524.5" y="358.6" width="31" height="13.4" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="540" cy="385" r="3.4" fill="#F7F5EF"/></g>
+<g class="c qubit" style="animation-delay:0.49s">
+  <text x="620" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">BAC</text>
+  <circle cx="620" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 620 134)"><path d="M583,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="2.20s" begin="-2.59s" repeatCount="indefinite" path="M583,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:620px 134px;--a:41.9deg;--b:41.9deg">
+    <path d="M620,134 V112" stroke="#8fb5d2" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M615,113.5 L620,104 L625,113.5 Z" fill="#8fb5d2"/></g>
+  <circle cx="620" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="607" y="356.6" width="26" height="15.4" rx="3" fill="#8fb5d2" style="transform-origin:620px 372px;animation-delay:1.36s"/>
+<text class="c valor" x="620" y="349.6" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.36s">0,14</text></g>
+<g class="c marca"><rect x="604.5" y="354.1" width="31" height="17.9" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="620" cy="385" r="3.4" fill="#F7F5EF"/></g>
+<g class="c qubit" style="animation-delay:0.56s">
+  <text x="700" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">XOM</text>
+  <circle cx="700" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 700 134)"><path d="M663,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="3.35s" begin="-2.96s" repeatCount="indefinite" path="M663,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:700px 134px;--a:68.2deg;--b:84.1deg">
+    <path d="M700,134 V112" stroke="#b2afa8" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M695,113.5 L700,104 L705,113.5 Z" fill="#b2afa8"/></g>
+  <circle cx="700" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="687" y="323.9" width="26" height="48.1" rx="3" fill="#b2afa8" style="transform-origin:700px 372px;animation-delay:1.54s"/>
+<text class="c valor" x="700" y="316.9" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.54s">0,45</text></g>
+<g class="c marca"><rect x="684.5" y="321.4" width="31" height="50.6" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="700" cy="385" r="3.4" fill="#F7F5EF"/></g>
+<g class="c resto"><g class="c qubit" style="animation-delay:0.63s">
+  <text x="780" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">CVX</text>
+  <circle cx="780" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 780 134)"><path d="M743,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="2.89s" begin="-3.33s" repeatCount="indefinite" path="M743,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:780px 134px;--a:69.5deg;--b:93.3deg">
+    <path d="M780,134 V112" stroke="#baae9e" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M775,113.5 L780,104 L785,113.5 Z" fill="#baae9e"/></g>
+  <circle cx="780" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="767" y="316.6" width="26" height="55.4" rx="3" fill="#baae9e" style="transform-origin:780px 372px;animation-delay:1.73s"/>
+<text class="c valor" x="780" y="309.6" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.73s">0,51</text></g></g>
+<g class="c qubit" style="animation-delay:0.70s">
+  <text x="860" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">KO</text>
+  <circle cx="860" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 860 134)"><path d="M823,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="2.43s" begin="-3.70s" repeatCount="indefinite" path="M823,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:860px 134px;--a:0.0deg;--b:35.9deg">
+    <path d="M860,134 V112" stroke="#8bb5d7" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M855,113.5 L860,104 L865,113.5 Z" fill="#8bb5d7"/></g>
+  <circle cx="860" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="847" y="360.3" width="26" height="11.7" rx="3" fill="#8bb5d7" style="transform-origin:860px 372px;animation-delay:1.91s"/>
+<text class="c valor" x="860" y="353.3" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:1.91s">0,11</text></g>
+<g class="c marca"><rect x="844.5" y="357.8" width="31" height="14.2" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="860" cy="385" r="3.4" fill="#F7F5EF"/></g>
+<g class="c qubit" style="animation-delay:0.77s">
+  <text x="940" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">PEP</text>
+  <circle cx="940" cy="134" r="31" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
+  <g transform="rotate(-18 940 134)"><path d="M903,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
+    <circle r="2.2" fill="#BFD9F2" filter="url(#brillo)"><animateMotion dur="3.58s" begin="-4.07s" repeatCount="indefinite" path="M903,134 a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"/></circle></g>
+  <g class="c flecha" style="transform-origin:940px 134px;--a:44.3deg;--b:44.3deg">
+    <path d="M940,134 V112" stroke="#91b4d1" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M935,113.5 L940,104 L945,113.5 Z" fill="#91b4d1"/></g>
+  <circle cx="940" cy="134" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
+</g>
+<g class="c resultado"><rect class="c barra" x="927" y="355.5" width="26" height="16.5" rx="3" fill="#91b4d1" style="transform-origin:940px 372px;animation-delay:2.10s"/>
+<text class="c valor" x="940" y="348.5" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:2.10s">0,15</text></g>
+<g class="c marca"><rect x="924.5" y="353.0" width="31" height="19.0" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/><circle cx="940" cy="385" r="3.4" fill="#F7F5EF"/></g>
+<path d="M34,372.5 H966" stroke="#3a5373" stroke-width="1"/>
+<g class="c barrido"><rect x="-16" y="90" width="32" height="286" fill="url(#haz)" opacity=".13"/><rect x="-5" y="90" width="10" height="286" fill="url(#haz)" opacity=".22"/><rect x="-1.1" y="90" width="2.2" height="286" fill="url(#haz)"/></g>
+<text class="c leyenda l1" x="500" y="420" font-size="18.5" text-anchor="middle" fill="#F7F5EF"><tspan fill="#F2A65A" font-weight="700">1</tspan><tspan fill="#5d7696">  ·  </tspan>Cada activo es un qubit</text>
+<text class="c leyenda l2" x="500" y="420" font-size="18.5" text-anchor="middle" fill="#F7F5EF"><tspan fill="#F2A65A" font-weight="700">2</tspan><tspan fill="#5d7696">  ·  </tspan>RY carga el riesgo propio: a más riesgo, más gira la flecha hacia el 1</text>
+<text class="c leyenda l3" x="500" y="420" font-size="18.5" text-anchor="middle" fill="#F7F5EF"><tspan fill="#F2A65A" font-weight="700">3</tspan><tspan fill="#5d7696">  ·  </tspan>CRY agrega el contagio entre los activos que se mueven juntos</text>
+<text class="c leyenda l4" x="500" y="420" font-size="18.5" text-anchor="middle" fill="#F7F5EF"><tspan fill="#F2A65A" font-weight="700">4</tspan><tspan fill="#5d7696">  ·  </tspan>Se mide una sola vez: la frecuencia de 1 es el índice de riesgo</text>
+<text class="c leyenda l5" x="500" y="420" font-size="18.5" text-anchor="middle" fill="#F7F5EF"><tspan fill="#F2A65A" font-weight="700">5</tspan><tspan fill="#5d7696">  ·  </tspan>La cartera toma los seis activos de menor índice</text>
+</svg>
