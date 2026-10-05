@@ -4,6 +4,7 @@ numpy
 pandas
 scipy
 matplotlib
+plotly
 jinja2
 jupyterlab
 yfinance

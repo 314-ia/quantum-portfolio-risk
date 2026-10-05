@@ -49,6 +49,9 @@ python3 -m venv .venv
 - En Google Colab alcanza con descomentar la línea `%pip` de la primera celda de código.
 - El notebook corre de arriba hacia abajo en alrededor de un minuto. Todo lo cuántico se ejecuta en simuladores,
   salvo la sección 7.2.
+- Los dos gráficos de curvas, en las secciones 1 y 8, son interactivos en JupyterLab: se arrastra el mouse para
+  agrandar una zona, al pasarlo se ven los valores y la leyenda funciona como filtro de curvas. En GitHub y en
+  cualquier visor sin JavaScript se ven como imagen fija.
 - Los precios se bajan de Yahoo Finance al ejecutar. El notebook guarda una copia en `notebook/datos/` para poder
   trabajar después sin conexión. Esa copia no se sube al repositorio.
 
