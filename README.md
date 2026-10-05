@@ -13,7 +13,7 @@ Circuitos cuánticos paramétricos para **estimar el riesgo de cada activo de un
 
 Este repositorio contiene el material de la clase **Aplicaciones Financieras en la Computación Cuántica**, dictada en la Escuela Internacional de Informática del CACIC 2026: las diapositivas y un notebook de Qiskit listo para correr.
 
-> **Trabajo de referencia:** J. P. Braña, A. M. J. Litterio, A. Fernández y S. E. Sepúlveda Cuevas, *A Parametric Quantum Circuit for Portfolio Risk Assessment at 110 Qubits: Three-Way Validation and a Demonstrator of the Path to Advantage via Amplitude Estimation*, aceptado en QCQSE-Chile, JCC 2026.
+> **Trabajo de referencia:** J. P. Braña, A. M. J. Litterio, A. Fernández et al., *A Parametric Quantum Circuit for Portfolio Risk Assessment at 110 Qubits: Three-Way Validation and a Demonstrator of the Path to Advantage via Amplitude Estimation*, aceptado en QCQSE-Chile, JCC 2026.
 
 > **In English.** Parametric quantum circuits that estimate a per-asset risk index for an investment portfolio, built from real market data and run on simulators and on IBM Quantum hardware. The circuit angles are computed directly from historical data, with no optimization loop. This repository holds the material of a class taught in Spanish at the CACIC 2026 school: the slides and a ready-to-run Qiskit notebook.
 
@@ -119,7 +119,7 @@ Para citar el **método**, el trabajo de referencia:
 
 ```bibtex
 @inproceedings{brana2026parametric,
-  author    = {Brana, Juan Pablo and Litterio, Alejandra M. J. and Fernandez, Alejandro and Sepulveda Cuevas, Samuel E.},
+  author    = {Brana, Juan Pablo and Litterio, Alejandra M. J. and Fernandez, Alejandro and others},
   title     = {A Parametric Quantum Circuit for Portfolio Risk Assessment at 110 Qubits: Three-Way Validation and a Demonstrator of the Path to Advantage via Amplitude Estimation},
   booktitle = {Workshop Chileno de Computaci{\'o}n Cu{\'a}ntica e Ingenier{\'i}a de Software Cu{\'a}ntico (QCQSE-Chile), JCC 2026},
   year      = {2026},
