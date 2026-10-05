@@ -3,7 +3,7 @@
 .env.*
 !.env.example
 
-# Entornos de Python locales: se recrean con requirements-lock.txt
+# Entornos de Python locales: se recrean con CACIC/notebook/requirements.txt
 .venv/
 
 # Copia local de precios: Yahoo limita sus datos a uso personal.

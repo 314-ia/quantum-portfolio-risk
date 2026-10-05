@@ -15,8 +15,7 @@ completo, de la teoría clásica de Markowitz a un circuito que corre en una com
 | `notebook/Finanzas_Cuanticas_CACIC2026.ipynb` | El notebook de la clase, ya ejecutado, con salidas y figuras |
 | `notebook/datos/resultado_hardware.json` | Resultado real del circuito de 12 qubits en `ibm_fez`: número de trabajo y las 4.000 mediciones |
 | `notebook/datos/experimento_110_qubits_ibm_fez.csv` | Índices de riesgo de la corrida de 110 qubits en `ibm_fez` del 27 de junio de 2026 |
-| `notebook/requirements.txt` | Paquetes necesarios, con versiones mínimas |
-| `notebook/requirements-lock.txt` | Las versiones exactas con que se construyó y probó el notebook |
+| `notebook/requirements.txt` | Paquetes necesarios, en las versiones con que se construyó y probó el notebook |
 | `notebook/.env.example` | Plantilla para las credenciales de IBM Quantum |
 | `material_extra/figuras/` | Las figuras de las diapositivas en PNG |
 
@@ -39,12 +38,11 @@ completo, de la teoría clásica de Markowitz a un circuito que corre en una com
 git clone https://github.com/314-ia/quantum-portfolio-risk.git
 cd quantum-portfolio-risk/CACIC
 python3 -m venv .venv
-.venv/bin/pip install -r notebook/requirements-lock.txt
+.venv/bin/pip install -r notebook/requirements.txt
 .venv/bin/jupyter lab notebook/Finanzas_Cuanticas_CACIC2026.ipynb
 ```
 
-- La lista exacta de versiones es para Python 3.13, la única versión con que se probó. Con otra versión de Python
-  se instala `notebook/requirements.txt`, que solo fija versiones mínimas.
+- Las versiones fijadas en `notebook/requirements.txt` exigen Python 3.12 como mínimo. Se probó con Python 3.13.
 - En Windows los ejecutables están en `.venv\Scripts\`.
 - En Google Colab alcanza con descomentar la línea `%pip` de la primera celda de código.
 - El notebook corre de arriba hacia abajo en alrededor de un minuto. Todo lo cuántico se ejecuta en simuladores,
