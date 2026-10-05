@@ -19,6 +19,12 @@ Este repositorio contiene el material de la clase **Aplicaciones Financieras en 
 
 ## Cómo se compone el método
 
+<p align="center">
+  <img src="assets/como-se-compone-el-metodo.svg" width="100%" alt="Animación del método. Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY agregan el contagio entre activos correlacionados. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.">
+</p>
+
+La animación usa los datos reales de la clase: el giro de cada flecha sale del riesgo del activo y las barras son el índice medido en `ibm_fez`. El mismo recorrido, paso a paso:
+
 ```mermaid
 sequenceDiagram
     autonumber
