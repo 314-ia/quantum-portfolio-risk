@@ -7,6 +7,9 @@ del Curso 3: "Fundamentos e Intuición del Cómputo Cuántico – De los Princip
 Es de nivel introductorio. Se arman carteras con precios reales de 12 empresas conocidas y se recorre el camino
 completo, de la teoría clásica de Markowitz a un circuito que corre en una computadora cuántica de IBM.
 
+El notebook también se puede leer en línea, ya ejecutado, en el
+[sitio del proyecto](https://314-ia.github.io/quantum-portfolio-risk/notebook.html).
+
 ## Contenido
 
 | Carpeta o archivo | Qué es |
