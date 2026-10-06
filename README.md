@@ -94,7 +94,7 @@ python3 -m venv .venv
 ## Contenido
 
 - [`CACIC/notebook/Finanzas_Cuanticas_CACIC2026.ipynb`](CACIC/notebook/Finanzas_Cuanticas_CACIC2026.ipynb): el notebook de la clase, ya ejecutado, con salidas y figuras
-- [`CACIC/presentacion/`](CACIC/presentacion/): las 15 diapositivas en PDF
+- [`CACIC/presentacion/`](CACIC/presentacion/): las 14 diapositivas en PDF
 - [`CACIC/notebook/datos/`](CACIC/notebook/datos/): resultado real del circuito de 12 qubits y datos del experimento de 110 qubits
 - [`CACIC/material_extra/figuras/`](CACIC/material_extra/figuras/): las figuras de las diapositivas
 - [`CACIC/README.md`](CACIC/README.md): la guía de la clase
