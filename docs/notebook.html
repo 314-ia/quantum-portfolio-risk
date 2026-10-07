@@ -9789,6 +9789,7 @@ Sin conexiones:             AAPL, NVDA, TSLA, MELI
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="5.6-De-%C3%ADndice-de-riesgo-a-cartera">5.6 De índice de riesgo a cartera<a class="anchor-link" href="#5.6-De-%C3%ADndice-de-riesgo-a-cartera">¶</a></h3><p>Regla en dos pasos. <strong>Qué activos entran</strong> lo decide el circuito: los <strong>6 de menor índice de riesgo</strong>. Esa es la parte combinatoria, la de sí o no. <strong>Cuánto va a cada uno</strong> lo decide mínima varianza entre esos 6, es decir, Markowitz dentro del grupo elegido, con un tope de un tercio por activo para no concentrar.</p>
+<p>Un detalle para leer bien los resultados: el circuito elige <strong>exactamente 6</strong>, pero mínima varianza puede dejar a alguno de los 6 en <strong>0 %</strong> si no aporta diversificación. Con estos datos le pasa a Bank of America, muy correlacionado con JPMorgan, y la cartera queda con 5 activos con dinero. No es un defecto: Markowitz completo hace lo mismo con cuatro de los 12. Lo decimos en lugar de forzar un piso, porque esa regla se agregaría después de mirar la evaluación.</p>
 <p>Así cada herramienta hace lo que sabe hacer: el circuito ordena por riesgo con contagio, y el optimizador clásico usa las correlaciones para repartir. La comparación con Markowitz completo sigue siendo exigente: él elige entre los 12 con pesos libres.</p>
 </div>
 </div>

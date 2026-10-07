@@ -96,7 +96,8 @@ Trabajo `db1djj3id5ic73er0ceg`: 4.000 mediciones, 3 segundos de procesador. Circ
   esperable con 4.000 mediciones llega a 0,008. La mayor diferencia es la de MSFT: 0,034.
 - El orden de riesgo coincide con el ideal. Solo se invierten KO y JPM, que en el ideal están empatados.
 - La cartera elige los mismos seis activos que el ideal; los pesos los pone mínima varianza entre esos seis, con tope de
-  un tercio: KO 33 %, PEP 25 %, JPM 16 %, XOM 16 %, AAPL 10 % y BAC 0 %. En los 12 meses de prueba tuvo una volatilidad
+  un tercio: KO 33 %, PEP 25 %, JPM 16 %, XOM 16 %, AAPL 10 % y BAC 0 %: elige exactamente seis, pero mínima varianza deja en cero al que no
+  diversifica, y BAC está muy correlacionado con JPM. En los 12 meses de prueba tuvo una volatilidad
   de 11,3 % y una máxima caída de 5,8 %. El mercado tuvo 12,5 % y 8,9 %; la cartera de mínimo riesgo de Markowitz, 9,6 % y 4,4 %.
 - En el experimento de 110 qubits la diferencia promedio con el ideal fue 0,10: el ruido crece con el tamaño del
   circuito.
