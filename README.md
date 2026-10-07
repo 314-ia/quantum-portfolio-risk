@@ -67,6 +67,7 @@ Evaluación de las carteras con 12 meses de datos que el modelo nunca vio:
 | Circuito cuántico, hardware real | +25,0 % | 11,3 % | −5,8 % |
 | Modelo clásico de difusión | +16,2 % | 10,7 % | −8,7 % |
 | Control: los 6 de menor volatilidad histórica, mismos pesos | +20,0 % | 9,8 % | −4,3 % |
+| VQE: 3 de 6 activos a partes iguales, busca rendimiento | +41,8 % | 16,9 % | −9,8 % |
 | SPY, el mercado | +31,1 % | 12,5 % | −8,9 % |
 
 El objetivo del método es bajar el riesgo, así que las columnas que importan son la volatilidad y la máxima caída. La tabla completa y el detalle por activo están en la [guía de la clase](CACIC/README.md).
