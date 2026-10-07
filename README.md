@@ -44,7 +44,7 @@ sequenceDiagram
     Q->>B: una sola ejecución con 4.000 mediciones
     B->>E: frecuencia de 1 en cada qubit<br/>= índice de riesgo del activo
     Note over E: cartera con los 6 activos<br/>de menor índice, con pesos<br/>de mínima varianza entre ellos
-    Y->>E: los 12 meses siguientes, que el modelo nunca vio
+    Y->>E: los 12 meses siguientes a la ventana de construcción
     Note over E: volatilidad y máxima caída<br/>contra el mercado y Markowitz
 ```
 
@@ -59,7 +59,7 @@ Lo que distingue al método: **los ángulos salen de una fórmula y no de un opt
 
 El circuito de 12 qubits se ejecutó una sola vez, con 4.000 mediciones y 3 segundos de procesador: trabajo `db1djj3id5ic73er0ceg`. La cartera armada con el resultado real elige los mismos seis activos que la versión ideal.
 
-Evaluación de las carteras con 12 meses de datos que el modelo nunca vio:
+Evaluación de las carteras en FUTURO, los 12 meses posteriores a la ventana de construcción. Fue un período nunca visto en la primera evaluación; después la regla de pesos se cambió, así que estos resultados son exploratorios:
 
 | Cartera | Rendimiento | Volatilidad anual | Máxima caída |
 |---|---|---|---|
@@ -67,10 +67,12 @@ Evaluación de las carteras con 12 meses de datos que el modelo nunca vio:
 | Circuito cuántico, hardware real | +25,0 % | 11,3 % | −5,8 % |
 | Modelo clásico de difusión | +16,2 % | 10,7 % | −8,7 % |
 | Control: los 6 de menor volatilidad histórica, mismos pesos | +20,0 % | 9,8 % | −4,3 % |
-| VQE: 12 activos, solo riesgo, mismos pesos | +27,3 % | 11,0 % | −5,0 % |
+| VQE: 12 activos, solo riesgo, misma regla de pesos | +27,3 % | 11,0 % | −5,0 % |
 | SPY, el mercado | +31,1 % | 12,5 % | −8,9 % |
 
-El objetivo del método es bajar el riesgo, así que las columnas que importan son la volatilidad y la máxima caída. La tabla completa y el detalle por activo están en la [guía de la clase](CACIC/README.md).
+El objetivo del método es bajar el riesgo, así que las columnas que importan son la volatilidad y la máxima caída.
+
+Prueba fuera de muestra pura, con las carteras congeladas, en cinco meses que nadie consultó, del 30 de abril al 30 de septiembre de 2026: SPY 12,4 % de volatilidad, VQE 12,4 %, circuito 12,7 %, Markowitz 13,6 %, regla trivial 14,0 %. Nadie le gana al mercado y el orden entre métodos cambia respecto de FUTURO: ninguna ventaja es robusta. La tabla completa está en la sección 8 del notebook. La tabla completa y el detalle por activo están en la [guía de la clase](CACIC/README.md).
 
 ## Qué se puede afirmar y qué no
 

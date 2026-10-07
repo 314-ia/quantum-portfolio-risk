@@ -33,7 +33,7 @@ El notebook también se puede leer en línea, ya ejecutado, en el
 | 5 | Un circuito que estima el riesgo de cada activo | Simulador cuántico |
 | 6 | Por qué ese circuito no arranca con Hadamard | Simulador cuántico |
 | 7 | El mismo circuito con ruido y en una computadora cuántica | Simulador con ruido e IBM Quantum |
-| 8 | Evaluación con datos que el modelo nunca vio | Computadora clásica |
+| 8 | Evaluación en los 12 meses posteriores y prueba fuera de muestra nueva | Computadora clásica |
 
 ## Cómo correrlo
 
@@ -97,8 +97,9 @@ Trabajo `db1djj3id5ic73er0ceg`: 4.000 mediciones, 3 segundos de procesador. Circ
 - El orden de riesgo coincide con el ideal. Solo se invierten KO y JPM, que en el ideal están empatados.
 - La cartera elige los mismos seis activos que el ideal; los pesos los pone mínima varianza entre esos seis, con tope de
   un tercio: KO 33 %, PEP 25 %, JPM 16 %, XOM 16 %, AAPL 10 % y BAC 0 %: elige exactamente seis, pero mínima varianza deja en cero al que no
-  diversifica, y BAC está muy correlacionado con JPM. En los 12 meses de prueba tuvo una volatilidad
-  de 11,3 % y una máxima caída de 5,8 %. El mercado tuvo 12,5 % y 8,9 %; la cartera de mínimo riesgo de Markowitz, 9,6 % y 4,4 %.
+  diversifica, y BAC está muy correlacionado con JPM. En FUTURO, los 12 meses posteriores, tuvo una volatilidad
+  de 11,3 % y una máxima caída de 5,8 %; en los cinco meses nunca consultados, de mayo a septiembre de 2026, 12,7 % y 5,1 %,
+  contra 12,4 % y 4,5 % del mercado. El mercado tuvo 12,5 % y 8,9 %; la cartera de mínimo riesgo de Markowitz, 9,6 % y 4,4 %.
 - En el experimento de 110 qubits la diferencia promedio con el ideal fue 0,10: el ruido crece con el tamaño del
   circuito.
 
