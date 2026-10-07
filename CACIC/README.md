@@ -95,20 +95,17 @@ Trabajo `db1djj3id5ic73er0ceg`: 4.000 mediciones, 3 segundos de procesador. Circ
 - La diferencia promedio con el ideal fue 0,015 en hardware y 0,010 en el simulador con ruido. El error de muestreo
   esperable con 4.000 mediciones llega a 0,008. La mayor diferencia es la de MSFT: 0,034.
 - El orden de riesgo coincide con el ideal. Solo se invierten KO y JPM, que en el ideal están empatados.
-- La cartera elige los mismos seis activos que el ideal; los pesos los pone mínima varianza entre esos seis, con tope de
-  un tercio: KO 33 %, PEP 25 %, JPM 16 %, XOM 16 %, AAPL 10 % y BAC 0 %: elige exactamente seis, pero mínima varianza deja en cero al que no
-  diversifica, y BAC está muy correlacionado con JPM. En FUTURO, los 12 meses posteriores, tuvo una volatilidad
-  de 11,3 % y una máxima caída de 5,8 %; en los cinco meses nunca consultados, de mayo a septiembre de 2026, 12,7 % y 5,1 %,
-  contra 12,4 % y 4,5 % del mercado. El mercado tuvo 12,5 % y 8,9 %; la cartera de mínimo riesgo de Markowitz, 9,6 % y 4,4 %.
+- La cartera pesa los 12 activos por 1 / índice, sin corte: con el índice del hardware, KO 20 %, JPM 20 %, BAC 15 %, PEP 14 %,
+  AAPL 7 % y entre 2 y 4 % el resto; con el ideal, casi igual. En FUTURO, los 12 meses posteriores, tuvo 11,0 % de volatilidad;
+  el mercado, 12,5 %; Markowitz, 9,6 %; el análogo clásico, los 12 por 1 / volatilidad histórica, 10,3 %. En los cinco meses
+  posteriores, de mayo a septiembre de 2026: circuito 10,5 %, análogo 10,0 %, mercado 12,4 %, Markowitz 13,6 %.
 - En el experimento de 110 qubits la diferencia promedio con el ideal fue 0,10: el ruido crece con el tamaño del
   circuito.
 
 No hay ventaja cuántica: este circuito se puede simular en una laptop y el método clásico logra menos riesgo. La prueba de
-control de la sección 8 del notebook es más dura: con la misma regla de pesos, elegir los 6 activos de menor volatilidad
-histórica da 9,8 % de volatilidad y 4,3 % de caída, mejor que la selección del circuito, y el 37 % de 200 selecciones al
-azar termina con menos volatilidad. Sin selección, pesando los 12 por 1 / índice, pasa lo mismo: 11,0 % contra 10,3 % pesando
-por 1 / volatilidad histórica. La regla de pesos se cambió a mínima varianza después de una primera evaluación; la
-decisión se sostiene mirando solo HISTORIA, pero el orden de los hechos fue ese.
+control de la sección 8 del notebook es más dura: con la misma regla de cartera, pesar los 12 por 1 / volatilidad histórica
+rinde mejor que pesarlos por el índice del circuito. La regla de cartera se cambió dos veces después de ver la primera
+evaluación, la última vez por diseño, para que ningún número fuera una decisión nuestra; por eso las cifras son exploratorias.
 
 ## Diapositivas y notebook
 

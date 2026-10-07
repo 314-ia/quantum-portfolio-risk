@@ -130,7 +130,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
 </div>
 
 <figure>
-  <img src="../assets/como-se-compone-el-metodo.svg" width="1000" height="440" alt="Animation of the method. Twelve qubits, one per asset. An RY rotation loads each asset's own risk into its qubit. CRY gates add contagion between correlated assets. On measurement, the frequency of 1 in each qubit is its risk index. The portfolio takes the six assets with the lowest index.">
+  <img src="../assets/como-se-compone-el-metodo.svg" width="1000" height="440" alt="Animation of the method. Twelve qubits, one per asset. An RY rotation loads each asset's own risk into its qubit. CRY gates add contagion between correlated assets. On measurement, the frequency of 1 in each qubit is its risk index. The portfolio weights each asset by 1 / index: the calmest weigh the most.">
   <figcaption>The animation uses the real data from the class: each arrow's rotation comes from the asset's risk, and the bars are the index measured on IBM's <code>ibm_fez</code> processor. Its captions are in Spanish.</figcaption>
 </figure>
 
@@ -154,17 +154,16 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
       <tr><td>Reference paper, June 27, 2026</td><td><code>ibm_fez</code></td><td class="n">110</td><td class="n">0.10</td></tr>
     </tbody>
   </table></div>
-  <p>The 12-qubit circuit was executed once, with 4,000 shots and 3 seconds of processor time. The portfolio built from the real result picks the same six assets as the ideal version.</p>
+  <p>The 12-qubit circuit was executed once, with 4,000 shots and 3 seconds of processor time. The portfolio built from the real result allocates almost exactly like the ideal version: no weight differs by more than two points.</p>
   <h3 style="margin-top:28px">The portfolios, evaluated on FUTURO: the 12 months after the construction window</h3>
   <div class="tabla"><table>
-    <thead><tr><th>Portfolio</th><th class="n">Return</th><th class="n">Annual volatility</th><th class="n">Maximum drawdown</th></tr></thead>
+    <thead><tr><th>Portfolio</th><th class="n">Return</th><th class="n">Annual volatility</th></tr></thead>
     <tbody>
-      <tr><td>Markowitz, minimum risk</td><td class="n">+20.8%</td><td class="n">9.6%</td><td class="n">−4.4%</td></tr>
-      <tr><td>Quantum circuit, real hardware</td><td class="n">+25.0%</td><td class="n">11.3%</td><td class="n">−5.8%</td></tr>
-      <tr><td>Classical diffusion model</td><td class="n">+16.2%</td><td class="n">10.7%</td><td class="n">−8.7%</td></tr>
-      <tr><td>Control: the 6 assets with the lowest historical volatility, same weights</td><td class="n">+20.0%</td><td class="n">9.8%</td><td class="n">−4.3%</td></tr>
-      <tr><td>VQE: 12 assets, risk only, same weighting rule</td><td class="n">+27.3%</td><td class="n">11.0%</td><td class="n">−5.0%</td></tr>
-      <tr><td>SPY, the market</td><td class="n">+31.1%</td><td class="n">12.5%</td><td class="n">−8.9%</td></tr>
+      <tr><td>Markowitz, minimum risk</td><td class="n">+20.8%</td><td class="n">9.6%</td></tr>
+      <tr><td>Classical analogue: all 12 weighted by 1 / historical volatility</td><td class="n">+28.4%</td><td class="n">10.3%</td></tr>
+      <tr><td>Quantum circuit, real hardware: all 12 weighted by 1 / index</td><td class="n">+27.3%</td><td class="n">11.0%</td></tr>
+      <tr><td>VQE: picks 6, minimum variance</td><td class="n">+27.3%</td><td class="n">11.0%</td></tr>
+      <tr><td>SPY, the market</td><td class="n">+31.1%</td><td class="n">12.5%</td></tr>
     </tbody>
   </table></div>
   <p>The goal of the method is to lower risk, so the columns that matter are volatility and maximum drawdown.</p>
@@ -174,7 +173,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <h2>What can and cannot be claimed</h2>
   <ul class="claro">
     <li><strong>The circuit runs on current hardware.</strong> With 12 qubits the real result almost matches the ideal one. With 110 qubits the noise grows and the overall risk ordering holds.</li>
-    <li><strong>There is no quantum advantage.</strong> These circuits can be simulated on a laptop, and a classical method such as Markowitz's achieves lower-risk portfolios. With the same weighting rule, a trivial selection, the 6 assets with the lowest historical volatility, beats the circuit's selection, and weighting all 12 by historical volatility beats weighting them by the circuit's index. The weighting rule was changed after a first evaluation, so FUTURO is no longer a pure test. On five months nobody had consulted, May to September 2026, nothing beats the market on volatility: SPY 12.4%, VQE 12.4%, circuit 12.7%, Markowitz 13.6%. No advantage is robust.</li>
+    <li><strong>There is no quantum advantage.</strong> These circuits can be simulated on a laptop, and a classical method such as Markowitz's achieves lower-risk portfolios. With the same portfolio rule, weighting all 12 assets by historical volatility beats weighting them by the circuit's index, both on FUTURO and on the five months after it, May to September 2026, where the circuit gave 10.5% and the classical analogue 10.0%. The portfolio rule was changed after a first evaluation, so the figures are exploratory. No advantage is robust.</li>
     <li><strong>The value is in the validation method.</strong> The circuit is compared against its ideal version and against a classical model, and a possible route to an algorithmic advantage is to use it inside quantum amplitude estimation, which in theory needs fewer samples.</li>
   </ul>
 </section>

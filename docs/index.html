@@ -130,7 +130,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
 </div>
 
 <figure>
-  <img src="assets/como-se-compone-el-metodo.svg" width="1000" height="440" alt="Animación del método. Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY acoplan los activos correlacionados, lo que leemos como contagio. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.">
+  <img src="assets/como-se-compone-el-metodo.svg" width="1000" height="440" alt="Animación del método. Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY acoplan los activos correlacionados, lo que leemos como contagio. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera pesa cada activo por 1 / índice: los más tranquilos pesan más.">
   <figcaption>La animación usa los datos reales de la clase: el giro de cada flecha sale del riesgo del activo y las barras son el índice medido en el procesador <code>ibm_fez</code> de IBM.</figcaption>
 </figure>
 
@@ -140,7 +140,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
     <div class="card"><span class="num">01</span><h3>Un qubit por activo</h3><p>Doce acciones conocidas, de Coca-Cola a Tesla y MercadoLibre, son doce qubits.</p></div>
     <div class="card"><span class="num">02</span><h3>RY carga el riesgo propio</h3><p>Una rotación con ángulo 2·arcsin(√R) deja en cada qubit el riesgo que el activo tiene por sí solo.</p></div>
     <div class="card"><span class="num">03</span><h3>CRY acopla a los correlacionados</h3><p>Compuertas controladas conectan los activos que se mueven juntos, con correlación de 0,6 o más. Lo leemos como contagio.</p></div>
-    <div class="card"><span class="num">04</span><h3>Se mide una sola vez</h3><p>La frecuencia de 1 en cada qubit es su índice de riesgo. La cartera toma los seis de menor índice.</p></div>
+    <div class="card"><span class="num">04</span><h3>Se mide una sola vez</h3><p>La frecuencia de 1 en cada qubit es su índice de riesgo. La cartera pesa los 12 activos por 1 / índice: los más tranquilos pesan más.</p></div>
   </div>
   <p style="margin-top:20px">Lo que distingue al método: <strong>los ángulos salen de una fórmula y no de un optimizador</strong>. No hay un bucle de muchas ejecuciones como en VQE o QAOA, y un qubit por activo permite llegar a 110 activos en un procesador actual.</p>
 </section>
@@ -154,27 +154,26 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
       <tr><td>Trabajo de referencia, 27 de junio de 2026</td><td><code>ibm_fez</code></td><td class="n">110</td><td class="n">0,10</td></tr>
     </tbody>
   </table></div>
-  <p>El circuito de 12 qubits se ejecutó una sola vez, con 4.000 mediciones y 3 segundos de procesador. La cartera armada con el resultado real elige los mismos seis activos que la versión ideal.</p>
+  <p>El circuito de 12 qubits se ejecutó una sola vez, con 4.000 mediciones y 3 segundos de procesador. La cartera armada con el resultado real reparte el dinero casi igual que la versión ideal: ningún peso difiere en más de dos puntos.</p>
   <h3 style="margin-top:28px">Las carteras, evaluadas en FUTURO: los 12 meses posteriores a la ventana de construcción</h3>
   <div class="tabla"><table>
-    <thead><tr><th>Cartera</th><th class="n">Rendimiento</th><th class="n">Volatilidad anual</th><th class="n">Máxima caída</th></tr></thead>
+    <thead><tr><th>Cartera</th><th class="n">Rendimiento</th><th class="n">Volatilidad anual</th></tr></thead>
     <tbody>
-      <tr><td>Markowitz, mínimo riesgo</td><td class="n">+20,8 %</td><td class="n">9,6 %</td><td class="n">−4,4 %</td></tr>
-      <tr><td>Circuito cuántico, hardware real</td><td class="n">+25,0 %</td><td class="n">11,3 %</td><td class="n">−5,8 %</td></tr>
-      <tr><td>Modelo clásico de difusión</td><td class="n">+16,2 %</td><td class="n">10,7 %</td><td class="n">−8,7 %</td></tr>
-      <tr><td>Control: los 6 de menor volatilidad histórica, mismos pesos</td><td class="n">+20,0 %</td><td class="n">9,8 %</td><td class="n">−4,3 %</td></tr>
-      <tr><td>VQE: 12 activos, solo riesgo, misma regla de pesos</td><td class="n">+27,3 %</td><td class="n">11,0 %</td><td class="n">−5,0 %</td></tr>
-      <tr><td>SPY, el mercado</td><td class="n">+31,1 %</td><td class="n">12,5 %</td><td class="n">−8,9 %</td></tr>
+      <tr><td>Markowitz, mínimo riesgo</td><td class="n">+20,8 %</td><td class="n">9,6 %</td></tr>
+      <tr><td>Análogo clásico: los 12 por 1 / volatilidad histórica</td><td class="n">+28,4 %</td><td class="n">10,3 %</td></tr>
+      <tr><td>Circuito cuántico, hardware real: los 12 por 1 / índice</td><td class="n">+27,3 %</td><td class="n">11,0 %</td></tr>
+      <tr><td>VQE: elige 6, mínima varianza</td><td class="n">+27,3 %</td><td class="n">11,0 %</td></tr>
+      <tr><td>SPY, el mercado</td><td class="n">+31,1 %</td><td class="n">12,5 %</td></tr>
     </tbody>
   </table></div>
-  <p>El objetivo del método es bajar el riesgo, así que las columnas que importan son la volatilidad y la máxima caída.</p>
+  <p>El objetivo del método es bajar el riesgo, así que la columna que importa es la volatilidad.</p>
 </section>
 
 <section id="honestidad">
   <h2>Qué se puede afirmar y qué no</h2>
   <ul class="claro">
     <li><strong>El circuito corre en hardware actual.</strong> Con 12 qubits el resultado real casi coincide con el ideal. Con 110 qubits el ruido crece y el orden general de riesgo se mantiene.</li>
-    <li><strong>No hay ventaja cuántica.</strong> Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo. Con la misma regla de pesos, una selección trivial, los 6 activos de menor volatilidad histórica, rinde mejor que la selección del circuito, y pesar los 12 por volatilidad histórica rinde mejor que pesarlos por el índice del circuito. La regla de pesos se cambió después de una primera evaluación, así que FUTURO ya no es un test puro. En cinco meses nunca consultados, de mayo a septiembre de 2026, nadie le gana al mercado en volatilidad: SPY 12,4 %, VQE 12,4 %, circuito 12,7 %, Markowitz 13,6 %. Ninguna ventaja es robusta.</li>
+    <li><strong>No hay ventaja cuántica.</strong> Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo. Con la misma regla de cartera, pesar los 12 activos por volatilidad histórica rinde mejor que pesarlos por el índice del circuito, en FUTURO y en los cinco meses posteriores, de mayo a septiembre de 2026, donde el circuito dio 10,5 % y el análogo clásico 10,0 %. La regla de cartera se cambió después de una primera evaluación, así que las cifras son exploratorias. Ninguna ventaja es robusta.</li>
     <li><strong>El valor está en el método de validación.</strong> El circuito se compara contra su versión ideal y contra un modelo clásico, y una posible línea hacia una ventaja algorítmica es usarlo dentro de la estimación de amplitud cuántica, que en teoría reduce las muestras necesarias.</li>
   </ul>
 </section>
