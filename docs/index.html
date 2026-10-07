@@ -174,7 +174,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <h2>Qué se puede afirmar y qué no</h2>
   <ul class="claro">
     <li><strong>El circuito corre en hardware actual.</strong> Con 12 qubits el resultado real casi coincide con el ideal. Con 110 qubits el ruido crece y el orden general de riesgo se mantiene.</li>
-    <li><strong>No hay ventaja cuántica.</strong> Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo. Con la misma regla de pesos, una selección trivial, los 6 activos de menor volatilidad histórica, rinde mejor que la selección del circuito. La regla de pesos se cambió después de una primera evaluación; se sostiene con los datos de entrenamiento, pero hay que decirlo.</li>
+    <li><strong>No hay ventaja cuántica.</strong> Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo. Con la misma regla de pesos, una selección trivial, los 6 activos de menor volatilidad histórica, rinde mejor que la selección del circuito, y pesar los 12 por volatilidad histórica rinde mejor que pesarlos por el índice del circuito. La regla de pesos se cambió después de una primera evaluación; se sostiene con los datos de entrenamiento, pero hay que decirlo.</li>
     <li><strong>El valor está en el método de validación.</strong> El circuito se compara contra su versión ideal y contra un modelo clásico, y una posible línea hacia una ventaja algorítmica es usarlo dentro de la estimación de amplitud cuántica, que en teoría reduce las muestras necesarias.</li>
   </ul>
 </section>

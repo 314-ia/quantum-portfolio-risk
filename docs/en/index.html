@@ -174,7 +174,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <h2>What can and cannot be claimed</h2>
   <ul class="claro">
     <li><strong>The circuit runs on current hardware.</strong> With 12 qubits the real result almost matches the ideal one. With 110 qubits the noise grows and the overall risk ordering holds.</li>
-    <li><strong>There is no quantum advantage.</strong> These circuits can be simulated on a laptop, and a classical method such as Markowitz's achieves lower-risk portfolios. With the same weighting rule, a trivial selection, the 6 assets with the lowest historical volatility, beats the circuit's selection. The weighting rule was changed after a first evaluation; the choice holds on the training data alone, but it should be said.</li>
+    <li><strong>There is no quantum advantage.</strong> These circuits can be simulated on a laptop, and a classical method such as Markowitz's achieves lower-risk portfolios. With the same weighting rule, a trivial selection, the 6 assets with the lowest historical volatility, beats the circuit's selection, and weighting all 12 by historical volatility beats weighting them by the circuit's index. The weighting rule was changed after a first evaluation; the choice holds on the training data alone, but it should be said.</li>
     <li><strong>The value is in the validation method.</strong> The circuit is compared against its ideal version and against a classical model, and a possible route to an algorithmic advantage is to use it inside quantum amplitude estimation, which in theory needs fewer samples.</li>
   </ul>
 </section>
