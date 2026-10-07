@@ -14,7 +14,7 @@ El notebook también se puede leer en línea, ya ejecutado, en el
 
 | Carpeta o archivo | Qué es |
 |---|---|
-| `presentacion/Aplicaciones_Financieras_Computacion_Cuantica_CACIC2026.pdf` | Las 27 diapositivas de la clase: 17 de la exposición y un anexo de 10 que explica el notebook sección por sección |
+| `presentacion/Aplicaciones_Financieras_Computacion_Cuantica_CACIC2026.pdf` | Las 28 diapositivas de la clase: 17 de la exposición y un anexo de 11 que explica el notebook sección por sección |
 | `notebook/Finanzas_Cuanticas_CACIC2026.ipynb` | El notebook de la clase, ya ejecutado, con salidas y figuras |
 | `notebook/datos/resultado_hardware.json` | Resultado real del circuito de 12 qubits en `ibm_fez`: número de trabajo y las 4.000 mediciones |
 | `notebook/datos/experimento_110_qubits_ibm_fez.csv` | Índices de riesgo de la corrida de 110 qubits en `ibm_fez` del 27 de junio de 2026 |
