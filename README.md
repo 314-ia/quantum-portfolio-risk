@@ -63,10 +63,10 @@ Evaluación de las carteras en FUTURO, los 12 meses posteriores a la ventana de 
 
 | Cartera | Rendimiento | Volatilidad anual |
 |---|---|---|
-| Markowitz, mínimo riesgo | +20,8 % | 9,6 % |
-| Circuito cuántico, hardware real: los 12 pesados por 1 / índice | +27,3 % | 11,0 % |
-| VQE: elige 6, mínima varianza | +27,3 % | 11,0 % |
-| SPY, el mercado | +31,1 % | 12,5 % |
+| Markowitz, mínimo riesgo | +20,83 % | 9,57 % |
+| Circuito cuántico, hardware real: los 12 pesados por 1 / índice | +27,35 % | 11,00 % |
+| VQE: elige 6, mínima varianza | +27,28 % | 10,96 % |
+| SPY, el mercado | +31,08 % | 12,49 % |
 
 El objetivo del método es bajar el riesgo, así que la columna que importa es la volatilidad.
 
