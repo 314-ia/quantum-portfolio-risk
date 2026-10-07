@@ -43,7 +43,7 @@ sequenceDiagram
     Note over Q: sin Hadamard y sin optimizador<br/>los ángulos salen de los datos
     Q->>B: una sola ejecución con 4.000 mediciones
     B->>E: frecuencia de 1 en cada qubit<br/>= índice de riesgo del activo
-    Note over E: cartera con los 6 activos<br/>de menor índice
+    Note over E: cartera con los 6 activos<br/>de menor índice, con pesos<br/>de mínima varianza entre ellos
     Y->>E: los 12 meses siguientes, que el modelo nunca vio
     Note over E: volatilidad y máxima caída<br/>contra el mercado y Markowitz
 ```
@@ -64,8 +64,8 @@ Evaluación de las carteras con 12 meses de datos que el modelo nunca vio:
 | Cartera | Rendimiento | Volatilidad anual | Máxima caída |
 |---|---|---|---|
 | Markowitz, mínimo riesgo | +20,8 % | 9,6 % | −4,4 % |
-| Circuito cuántico, hardware real | +26,7 % | 11,9 % | −9,6 % |
-| Modelo clásico de difusión | +24,0 % | 12,1 % | −10,5 % |
+| Circuito cuántico, hardware real | +25,0 % | 11,3 % | −5,8 % |
+| Modelo clásico de difusión | +16,2 % | 10,7 % | −8,7 % |
 | SPY, el mercado | +31,1 % | 12,5 % | −8,9 % |
 
 El objetivo del método es bajar el riesgo, así que las columnas que importan son la volatilidad y la máxima caída. La tabla completa y el detalle por activo están en la [guía de la clase](CACIC/README.md).
