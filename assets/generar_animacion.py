@@ -41,7 +41,7 @@ def onda(xa, xb, sentido=1, puntos=70, amplitud=5.0, ciclos=4):
 s = []
 s.append(f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
 <title id="t">Cómo se compone el método</title>
-<desc id="d">Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY agregan el contagio entre activos correlacionados. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.</desc>
+<desc id="d">Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY acoplan los activos correlacionados, lo que leemos como contagio. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.</desc>
 <defs>
   <radialGradient id="fondo" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="#16304f"/><stop offset="1" stop-color="#0b1626"/></radialGradient>
   <linearGradient id="haz" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F7F5EF" stop-opacity="0"/><stop offset=".5" stop-color="#F7F5EF" stop-opacity=".95"/><stop offset="1" stop-color="#F7F5EF" stop-opacity="0"/></linearGradient>
@@ -153,7 +153,7 @@ s.append(f'<g class="c barrido"><rect x="-16" y="90" width="32" height="{BASE - 
 
 leyendas = ["Cada activo es un qubit",
             "RY carga el riesgo propio: a más riesgo, más gira la flecha hacia el 1",
-            "CRY agrega el contagio entre los activos que se mueven juntos",
+            "CRY acopla a los activos que se mueven juntos: el contagio",
             "Se mide una sola vez: la frecuencia de 1 es el índice de riesgo",
             "La cartera toma los seis activos de menor índice"]
 for i, txt in enumerate(leyendas, 1):

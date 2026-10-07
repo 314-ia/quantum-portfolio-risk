@@ -8737,7 +8737,7 @@ queremos p = 0.75  -&gt;  theta = 2.094 rad  -&gt;  el simulador midió 1 el 75.
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Una-perilla-condicionada:-la-compuerta-CRY">Una perilla condicionada: la compuerta CRY<a class="anchor-link" href="#Una-perilla-condicionada:-la-compuerta-CRY">¶</a></h3><p>La compuerta $CR_Y(\theta)$ conecta <strong>dos</strong> qubits: gira al segundo <strong>solo si el primero está en</strong> $|1\rangle$.</p>
-<p>Nos va a servir para modelar el contagio: <em>"si el activo A está en problemas, el riesgo de B sube"</em>.</p>
+<p>Nos va a servir para acoplar activos correlacionados. Lo leemos como contagio, <em>"si el activo A está en problemas, el riesgo de B sube"</em>, aunque es una interpretación: correlación no es causalidad.</p>
 </div>
 </div>
 </div>
@@ -9126,7 +9126,7 @@ Encontró la mejor cartera en 2 de 10 arranques, usando 3853 ejecuciones del cir
 <ul>
 <li><strong>Un qubit por activo.</strong></li>
 <li>Una perilla $R_Y$ por activo carga su <strong>riesgo propio</strong>.</li>
-<li>Compuertas $CR_Y$ entre activos muy correlacionados modelan el <strong>contagio</strong>.</li>
+<li>Compuertas $CR_Y$ entre activos muy correlacionados acoplan sus qubits: lo leemos como <strong>contagio</strong>.</li>
 <li>Medimos: la frecuencia con que cada qubit da 1 es el <strong>índice de riesgo</strong> de ese activo.</li>
 </ul>
 <p>Lo importante: <strong>no hay bucle de optimización</strong>. Los ángulos se calculan una sola vez, directo de los datos históricos.</p>
@@ -9145,7 +9145,7 @@ Encontró la mejor cartera en 2 de 10 arranques, usando 3853 ejecuciones del cir
 <li><strong>frecuencia</strong>: qué tan seguido tiene días malos;</li>
 <li><strong>caída media</strong>: cuánto pierde en esos días.</li>
 </ul>
-<p>Llevamos cada una a la escala 0 a 1 dentro del grupo, las multiplicamos y volvemos a escalar. El resultado es $R$: 0 para el más tranquilo del grupo, 1 para el más riesgoso.</p>
+<p>Llevamos cada una a la escala 0 a 1 dentro del grupo, las multiplicamos y volvemos a escalar. El resultado es $R$: 0 para el más tranquilo del grupo, 1 para el más riesgoso. Es un índice relativo al grupo y a la ventana de tiempo, no un riesgo absoluto: $R = 0{,}8$ no significa "80 % de riesgo".</p>
 </div>
 </div>
 </div>
@@ -9323,7 +9323,7 @@ Encontró la mejor cartera en 2 de 10 arranques, usando 3853 ejecuciones del cir
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="5.2-El-mapa-de-contagio">5.2 El mapa de contagio<a class="anchor-link" href="#5.2-El-mapa-de-contagio">¶</a></h3><p>Para cada activo buscamos sus (hasta) 3 vecinos más correlacionados, y solo los conectamos si la correlación es de 0,6 o más. Cada conexión $i \to j$ se lee: <em>"si $i$ está en problemas, empuja a $j$"</em>.</p>
+<h3 id="5.2-El-mapa-de-contagio">5.2 El mapa de contagio<a class="anchor-link" href="#5.2-El-mapa-de-contagio">¶</a></h3><p>Para cada activo buscamos sus (hasta) 3 vecinos más correlacionados, y solo los conectamos si la correlación es de 0,6 o más. Cada conexión $i \to j$ se lee: <em>"si $i$ está en problemas, empuja a $j$"</em>. Es una lectura heurística de la correlación, que no implica causalidad.</p>
 </div>
 </div>
 </div>
@@ -9532,6 +9532,7 @@ Sin conexiones:             AAPL, NVDA, TSLA, MELI
 <ul>
 <li>Los activos <strong>sin conexiones</strong> salen con su riesgo propio, tal cual entró.</li>
 <li>Los que tienen una pareja muy correlacionada <strong>suben</strong>: un activo tranquilo, atado a uno más riesgoso, deja de ser tan tranquilo.</li>
+<li>La $CR_Y$ no suma riesgos: en la rama en que el control vale 1, el objetivo queda rotado $\theta_j + \theta_{ij}$ y su probabilidad es $\sin^2\big((\theta_j+\theta_{ij})/2\big)$, que crece mientras la suma no pase de $\pi$. Con estos datos siempre crece.</li>
 <li>Un activo conectado puede <strong>no cambiar</strong> si quien lo contagia tiene riesgo propio 0: ese qubit nunca se "enciende". Con estos datos pasa con BAC y PEP, cuyas parejas (JPM y KO) son las más tranquilas del grupo.</li>
 </ul>
 <h3 id="5.5-%C2%BFHace-falta-lo-cu%C3%A1ntico?-Un-modelo-cl%C3%A1sico-de-referencia">5.5 ¿Hace falta lo cuántico? Un modelo clásico de referencia<a class="anchor-link" href="#5.5-%C2%BFHace-falta-lo-cu%C3%A1ntico?-Un-modelo-cl%C3%A1sico-de-referencia">¶</a></h3><p>Para ser honestos, armamos la misma idea <strong>sin</strong> computadora cuántica: el riesgo se difunde por el mismo mapa de contagio (parecido a cómo PageRank reparte importancia entre páginas web). Si el circuito no aporta nada distinto, los dos ordenamientos van a coincidir.</p>
@@ -9783,7 +9784,7 @@ Sin conexiones:             AAPL, NVDA, TSLA, MELI
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="5.6-De-%C3%ADndice-de-riesgo-a-cartera">5.6 De índice de riesgo a cartera<a class="anchor-link" href="#5.6-De-%C3%ADndice-de-riesgo-a-cartera">¶</a></h3><p>Regla simple: nos quedamos con los <strong>6 activos de menor índice de riesgo</strong>. A cada uno le damos un peso mayor cuanto menor es su riesgo, con un tope para no poner casi todo en uno solo (ninguno puede pesar más de un tercio).</p>
+<h3 id="5.6-De-%C3%ADndice-de-riesgo-a-cartera">5.6 De índice de riesgo a cartera<a class="anchor-link" href="#5.6-De-%C3%ADndice-de-riesgo-a-cartera">¶</a></h3><p>Regla simple, no una minimización de varianza como la de Markowitz: nos quedamos con los <strong>6 activos de menor índice de riesgo</strong>. A cada uno le damos un peso mayor cuanto menor es su riesgo, con un tope para no poner casi todo en uno solo (ninguno puede pesar más de un tercio).</p>
 </div>
 </div>
 </div>
@@ -9795,7 +9796,7 @@ Sin conexiones:             AAPL, NVDA, TSLA, MELI
 <div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cartera_de_menor_riesgo</span><span class="p">(</span><span class="n">indice</span><span class="p">,</span> <span class="n">cuantos</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tope</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cartera_por_indice_de_riesgo</span><span class="p">(</span><span class="n">indice</span><span class="p">,</span> <span class="n">cuantos</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">tope</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Pesos proporcionales a 1/riesgo entre los 'cuantos' activos de menor índice.</span>
 <span class="sd">    Tope: ningún activo pesa más que tope/cuantos (acá 2/6 = 33 %)."""</span>
     <span class="n">indice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">indice</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
@@ -9814,8 +9815,8 @@ Sin conexiones:             AAPL, NVDA, TSLA, MELI
     <span class="n">pesos</span><span class="p">[</span><span class="n">elegidos</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">pesos</span>
 
-<span class="n">w_cuantica</span> <span class="o">=</span> <span class="n">cartera_de_menor_riesgo</span><span class="p">(</span><span class="n">indice_ideal</span><span class="p">)</span>
-<span class="n">w_clasica</span> <span class="o">=</span> <span class="n">cartera_de_menor_riesgo</span><span class="p">(</span><span class="n">indice_clasico</span><span class="p">)</span>
+<span class="n">w_cuantica</span> <span class="o">=</span> <span class="n">cartera_por_indice_de_riesgo</span><span class="p">(</span><span class="n">indice_ideal</span><span class="p">)</span>
+<span class="n">w_clasica</span> <span class="o">=</span> <span class="n">cartera_por_indice_de_riesgo</span><span class="p">(</span><span class="n">indice_clasico</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Cartera con el índice del circuito:"</span><span class="p">,</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">TICKERS</span><span class="p">,</span> <span class="n">w_cuantica</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">par</span><span class="p">:</span> <span class="o">-</span><span class="n">par</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Cartera con el índice clásico:     "</span><span class="p">,</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">TICKERS</span><span class="p">,</span> <span class="n">w_clasica</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">par</span><span class="p">:</span> <span class="o">-</span><span class="n">par</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
@@ -9969,7 +9970,7 @@ El más riesgoso (TSLA, R = 0,95) con Hadamard se lee 0.72: parece menos riesgos
 
 <span class="k">def</span><span class="w"> </span><span class="nf">rmse</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Diferencia promedio con el resultado ideal (RMSE): </span><span class="si">{</span><span class="n">rmse</span><span class="p">(</span><span class="n">indice_ruido</span><span class="p">,</span><span class="w"> </span><span class="n">indice_ideal</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">RMSE respecto del ideal (la diferencia típica): </span><span class="si">{</span><span class="n">rmse</span><span class="p">(</span><span class="n">indice_ruido</span><span class="p">,</span><span class="w"> </span><span class="n">indice_ideal</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9991,7 +9992,7 @@ Circuito traducido: profundidad 15, 8 compuertas de dos qubits, usando {'sx': 52
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-Diferencia promedio con el resultado ideal (RMSE): 0.010
+RMSE respecto del ideal (la diferencia típica): 0.010
 </pre>
 </div>
 </div>
@@ -10078,7 +10079,7 @@ Diferencia promedio con el resultado ideal (RMSE): 0.010
             <span class="n">indice_hw</span> <span class="o">=</span> <span class="n">frecuencia_de_unos</span><span class="p">(</span><span class="n">registro</span><span class="p">[</span><span class="s2">"conteos"</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Resultado de hardware real: </span><span class="si">{</span><span class="n">registro</span><span class="p">[</span><span class="s1">'backend'</span><span class="p">]</span><span class="si">}</span><span class="s2">, trabajo </span><span class="si">{</span><span class="n">registro</span><span class="p">[</span><span class="s1">'job_id'</span><span class="p">]</span><span class="si">}</span><span class="s2">, enviado el </span><span class="si">{</span><span class="n">registro</span><span class="p">[</span><span class="s1">'enviado'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Circuito traducido: profundidad </span><span class="si">{</span><span class="n">registro</span><span class="p">[</span><span class="s1">'profundidad'</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">registro</span><span class="p">[</span><span class="s1">'compuertas_2q'</span><span class="p">]</span><span class="si">}</span><span class="s2"> compuertas de dos qubits, </span><span class="si">{</span><span class="n">registro</span><span class="p">[</span><span class="s1">'shots'</span><span class="p">]</span><span class="si">}</span><span class="s2"> mediciones"</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Diferencia promedio con el resultado ideal (RMSE): </span><span class="si">{</span><span class="n">rmse</span><span class="p">(</span><span class="n">indice_hw</span><span class="p">,</span><span class="w"> </span><span class="n">indice_ideal</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RMSE respecto del ideal (la diferencia típica): </span><span class="si">{</span><span class="n">rmse</span><span class="p">(</span><span class="n">indice_hw</span><span class="p">,</span><span class="w"> </span><span class="n">indice_ideal</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">"Hay un resultado guardado, pero es de otro circuito (cambiaron los activos o los datos). Volvé a enviarlo con EJECUTAR_EN_HARDWARE = True."</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -10098,7 +10099,7 @@ Diferencia promedio con el resultado ideal (RMSE): 0.010
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Resultado de hardware real: ibm_fez, trabajo db1djj3id5ic73er0ceg, enviado el 2026-10-04T19:57:17
 Circuito traducido: profundidad 15, 8 compuertas de dos qubits, 4000 mediciones
-Diferencia promedio con el resultado ideal (RMSE): 0.015
+RMSE respecto del ideal (la diferencia típica): 0.015
 </pre>
 </div>
 </div>
@@ -10181,7 +10182,7 @@ Diferencia promedio con el resultado ideal (RMSE): 0.015
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"índice de riesgo ideal (sin ruido)"</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"índice de riesgo medido en ibm_fez"</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"110 qubits en hardware real"</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">"equal"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span><span class="si">}</span><span class="s2"> activos. Coincidencia del orden con el ideal (Spearman): </span><span class="si">{</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">exp</span><span class="p">[</span><span class="s1">'q_ideal'</span><span class="p">],</span><span class="w"> </span><span class="n">exp</span><span class="p">[</span><span class="s1">'q_hw_mean'</span><span class="p">])</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Diferencia promedio con el ideal (RMSE): </span><span class="si">{</span><span class="n">rmse</span><span class="p">(</span><span class="n">exp</span><span class="p">[</span><span class="s1">'q_hw_mean'</span><span class="p">],</span><span class="w"> </span><span class="n">exp</span><span class="p">[</span><span class="s1">'q_ideal'</span><span class="p">])</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RMSE respecto del ideal (la diferencia típica): </span><span class="si">{</span><span class="n">rmse</span><span class="p">(</span><span class="n">exp</span><span class="p">[</span><span class="s1">'q_hw_mean'</span><span class="p">],</span><span class="w"> </span><span class="n">exp</span><span class="p">[</span><span class="s1">'q_ideal'</span><span class="p">])</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">cinco</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">columna</span><span class="p">,</span> <span class="n">mayor</span><span class="p">:</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">columna</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="ow">not</span> <span class="n">mayor</span><span class="p">)[</span><span class="s2">"ticker"</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Los 5 de MENOR riesgo -&gt;  ideal:"</span><span class="p">,</span> <span class="n">cinco</span><span class="p">(</span><span class="s2">"q_ideal"</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="s2">" | hardware:"</span><span class="p">,</span> <span class="n">cinco</span><span class="p">(</span><span class="s2">"q_hw_mean"</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Los 5 de MAYOR riesgo -&gt;  ideal:"</span><span class="p">,</span> <span class="n">cinco</span><span class="p">(</span><span class="s2">"q_ideal"</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="s2">" | hardware:"</span><span class="p">,</span> <span class="n">cinco</span><span class="p">(</span><span class="s2">"q_hw_mean"</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
@@ -10206,7 +10207,7 @@ Diferencia promedio con el resultado ideal (RMSE): 0.015
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>110 activos. Coincidencia del orden con el ideal (Spearman): 0.92
-Diferencia promedio con el ideal (RMSE): 0.102
+RMSE respecto del ideal (la diferencia típica): 0.102
 Los 5 de MENOR riesgo -&gt;  ideal: APD, UL, LMT, LIN, PG  | hardware: APD, LMT, PG, LIN, V
 Los 5 de MAYOR riesgo -&gt;  ideal: SMCI, TSLA, SNOW, QCOM, SHOP  | hardware: ENPH, SHOP, TXN, TSM, SMCI
 </pre>
@@ -10257,9 +10258,9 @@ Los 5 de MAYOR riesgo -&gt;  ideal: SMCI, TSLA, SNOW, QCOM, SHOP  | hardware: EN
                    <span class="s2">"máxima caída"</span><span class="p">:</span> <span class="p">(</span><span class="n">valor</span> <span class="o">/</span> <span class="n">valor</span><span class="o">.</span><span class="n">cummax</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()}</span>
 
 <span class="n">carteras</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Circuito cuántico (ideal)"</span><span class="p">:</span> <span class="n">w_cuantica</span><span class="p">,</span>
-            <span class="s2">"Circuito cuántico (simulador con ruido)"</span><span class="p">:</span> <span class="n">cartera_de_menor_riesgo</span><span class="p">(</span><span class="n">indice_ruido</span><span class="p">)}</span>
+            <span class="s2">"Circuito cuántico (simulador con ruido)"</span><span class="p">:</span> <span class="n">cartera_por_indice_de_riesgo</span><span class="p">(</span><span class="n">indice_ruido</span><span class="p">)}</span>
 <span class="k">if</span> <span class="n">indice_hw</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">carteras</span><span class="p">[</span><span class="s2">"Circuito cuántico (hardware real)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">cartera_de_menor_riesgo</span><span class="p">(</span><span class="n">indice_hw</span><span class="p">)</span>
+    <span class="n">carteras</span><span class="p">[</span><span class="s2">"Circuito cuántico (hardware real)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">cartera_por_indice_de_riesgo</span><span class="p">(</span><span class="n">indice_hw</span><span class="p">)</span>
 <span class="n">carteras</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">"Modelo clásico de difusión"</span><span class="p">:</span> <span class="n">w_clasica</span><span class="p">,</span> <span class="s2">"Markowitz: mínimo riesgo"</span><span class="p">:</span> <span class="n">w_min_riesgo</span><span class="p">,</span>
                  <span class="s2">"Los 12 por partes iguales"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n</span><span class="p">)})</span>
 
@@ -10373,7 +10374,7 @@ Los 5 de MAYOR riesgo -&gt;  ideal: SMCI, TSLA, SNOW, QCOM, SHOP  | hardware: EN
 <ol>
 <li>Que un circuito de 110 qubits con datos reales <strong>corre en hardware actual</strong> y se puede validar contra su versión ideal.</li>
 <li>Una <strong>receta de validación en tres vías</strong> (ideal, hardware, clásico) para separar "el modelo es distinto" de "el hardware tiene ruido".</li>
-<li>Un <strong>camino concreto hacia la ventaja</strong>: usar este mismo circuito como pieza de otro algoritmo, la <em>estimación de amplitud cuántica</em> (QAE), que estima probabilidades de pérdida con muchas menos repeticiones que el método clásico de Monte Carlo. Esa ventaja está demostrada en teoría; en la práctica necesita computadoras con corrección de errores.</li>
+<li>Una <strong>posible línea hacia una ventaja algorítmica</strong>: reformular la estimación de riesgo para usar este circuito dentro de la <em>estimación de amplitud cuántica</em> (QAE), que en teoría ofrece una mejora cuadrática en la cantidad de muestras frente al método clásico de Monte Carlo, bajo ciertas condiciones. En la práctica necesita computadoras con corrección de errores.</li>
 </ol>
 </div>
 </div>

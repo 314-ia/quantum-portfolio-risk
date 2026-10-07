@@ -22,7 +22,7 @@ Este repositorio contiene el material de la clase **Aplicaciones Financieras en 
 ## Cómo se compone el método
 
 <p align="center">
-  <img src="assets/como-se-compone-el-metodo.svg" width="100%" alt="Animación del método. Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY agregan el contagio entre activos correlacionados. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.">
+  <img src="assets/como-se-compone-el-metodo.svg" width="100%" alt="Animación del método. Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY acoplan los activos correlacionados, lo que leemos como contagio. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.">
 </p>
 
 La animación usa los datos reales de la clase: el giro de cada flecha sale del riesgo del activo y las barras son el índice medido en `ibm_fez`. El mismo recorrido, paso a paso:
@@ -74,7 +74,7 @@ El objetivo del método es bajar el riesgo, así que las columnas que importan s
 
 - **El circuito corre en hardware actual.** Con 12 qubits el resultado real casi coincide con el ideal. Con 110 qubits el ruido crece y el orden general de riesgo se mantiene.
 - **No hay ventaja cuántica.** Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo.
-- **El valor está en el método de validación.** El circuito se compara contra su versión ideal y contra un modelo clásico, y el paso siguiente es usarlo dentro de la estimación de amplitud cuántica.
+- **El valor está en el método de validación.** El circuito se compara contra su versión ideal y contra un modelo clásico, y una posible línea hacia una ventaja algorítmica es usarlo dentro de la estimación de amplitud cuántica, que en teoría reduce las muestras necesarias.
 
 ## Cómo correrlo
 
@@ -94,7 +94,7 @@ python3 -m venv .venv
 ## Contenido
 
 - [`CACIC/notebook/Finanzas_Cuanticas_CACIC2026.ipynb`](CACIC/notebook/Finanzas_Cuanticas_CACIC2026.ipynb): el notebook de la clase, ya ejecutado, con salidas y figuras
-- [`CACIC/presentacion/`](CACIC/presentacion/): las 25 diapositivas en PDF, con un anexo que explica el notebook sección por sección
+- [`CACIC/presentacion/`](CACIC/presentacion/): las 26 diapositivas en PDF, con un anexo que explica el notebook sección por sección
 - [`CACIC/notebook/datos/`](CACIC/notebook/datos/): resultado real del circuito de 12 qubits y datos del experimento de 110 qubits
 - [`CACIC/material_extra/figuras/`](CACIC/material_extra/figuras/): las figuras de las diapositivas
 - [`CACIC/README.md`](CACIC/README.md): la guía de la clase
@@ -107,7 +107,7 @@ Está previsto sumar más adelante el código del trabajo de investigación en e
 
 La teoría moderna de carteras de Markowitz busca la combinación de activos con menor riesgo para un rendimiento dado. Los optimizadores cuánticos más conocidos, VQE y QAOA, atacan ese problema con un circuito cuyos ángulos ajusta un optimizador clásico, en un bucle de muchas ejecuciones.
 
-Este trabajo toma otro camino: no optimiza, mide. Carga en cada qubit el riesgo propio de un activo, agrega el contagio entre activos correlacionados con compuertas controladas y lee un índice de riesgo por activo. La clase recorre los dos caminos con los mismos datos y los compara con el método clásico.
+Este trabajo toma otro camino: no optimiza, mide. Carga en cada qubit el riesgo propio de un activo, acopla los activos correlacionados con compuertas controladas, lo que interpretamos como contagio, y lee un índice de riesgo por activo. La clase recorre los dos caminos con los mismos datos y los compara con el método clásico.
 
 La clase forma parte del Curso 3, "Fundamentos e Intuición del Cómputo Cuántico – De los Principios a sus Aplicaciones", de la XXX Escuela Internacional de Informática del CACIC 2026, en la UTN Facultad Regional Concepción del Uruguay, del 5 al 9 de octubre de 2026.
 

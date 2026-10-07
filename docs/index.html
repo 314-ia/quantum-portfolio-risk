@@ -130,7 +130,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
 </div>
 
 <figure>
-  <img src="assets/como-se-compone-el-metodo.svg" width="1000" height="440" alt="Animación del método. Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY agregan el contagio entre activos correlacionados. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.">
+  <img src="assets/como-se-compone-el-metodo.svg" width="1000" height="440" alt="Animación del método. Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY acoplan los activos correlacionados, lo que leemos como contagio. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera toma los seis activos de menor índice.">
   <figcaption>La animación usa los datos reales de la clase: el giro de cada flecha sale del riesgo del activo y las barras son el índice medido en el procesador <code>ibm_fez</code> de IBM.</figcaption>
 </figure>
 
@@ -139,7 +139,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <div class="grid">
     <div class="card"><span class="num">01</span><h3>Un qubit por activo</h3><p>Doce acciones conocidas, de Coca-Cola a Tesla y MercadoLibre, son doce qubits.</p></div>
     <div class="card"><span class="num">02</span><h3>RY carga el riesgo propio</h3><p>Una rotación con ángulo 2·arcsin(√R) deja en cada qubit el riesgo que el activo tiene por sí solo.</p></div>
-    <div class="card"><span class="num">03</span><h3>CRY agrega el contagio</h3><p>Compuertas controladas conectan los activos que se mueven juntos, con correlación de 0,6 o más.</p></div>
+    <div class="card"><span class="num">03</span><h3>CRY acopla a los correlacionados</h3><p>Compuertas controladas conectan los activos que se mueven juntos, con correlación de 0,6 o más. Lo leemos como contagio.</p></div>
     <div class="card"><span class="num">04</span><h3>Se mide una sola vez</h3><p>La frecuencia de 1 en cada qubit es su índice de riesgo. La cartera toma los seis de menor índice.</p></div>
   </div>
   <p style="margin-top:20px">Lo que distingue al método: <strong>los ángulos salen de una fórmula y no de un optimizador</strong>. No hay un bucle de muchas ejecuciones como en VQE o QAOA, y un qubit por activo permite llegar a 110 activos en un procesador actual.</p>
@@ -173,7 +173,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <ul class="claro">
     <li><strong>El circuito corre en hardware actual.</strong> Con 12 qubits el resultado real casi coincide con el ideal. Con 110 qubits el ruido crece y el orden general de riesgo se mantiene.</li>
     <li><strong>No hay ventaja cuántica.</strong> Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo.</li>
-    <li><strong>El valor está en el método de validación.</strong> El circuito se compara contra su versión ideal y contra un modelo clásico, y el paso siguiente es usarlo dentro de la estimación de amplitud cuántica.</li>
+    <li><strong>El valor está en el método de validación.</strong> El circuito se compara contra su versión ideal y contra un modelo clásico, y una posible línea hacia una ventaja algorítmica es usarlo dentro de la estimación de amplitud cuántica, que en teoría reduce las muestras necesarias.</li>
   </ul>
 </section>
 
@@ -181,7 +181,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <h2>Qué incluye el material</h2>
   <div class="grid">
     <div class="card"><h3>Notebook de Qiskit</h3><p>Ocho secciones, de los precios de Yahoo Finance y la frontera eficiente de Markowitz a VQE, el circuito de riesgo y la evaluación final. Corre en simuladores en alrededor de un minuto.</p></div>
-    <div class="card"><h3>Diapositivas</h3><p>Dieciséis diapositivas más un anexo de nueve sobre el notebook: teoría moderna de carteras, circuitos paramétricos, VQE y QAOA, el método, por qué no se arranca con Hadamard y cómo leer los resultados.</p></div>
+    <div class="card"><h3>Diapositivas</h3><p>Diecisiete diapositivas más un anexo de nueve sobre el notebook: teoría moderna de carteras, circuitos paramétricos, VQE y QAOA, el método, por qué no se arranca con Hadamard y cómo leer los resultados.</p></div>
     <div class="card"><h3>Datos reales</h3><p>El resultado del circuito de 12 qubits en <code>ibm_fez</code>, con sus 4.000 mediciones, y los índices de riesgo del experimento de 110 qubits.</p></div>
   </div>
 </section>

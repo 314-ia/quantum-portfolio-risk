@@ -139,7 +139,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <div class="grid">
     <div class="card"><span class="num">01</span><h3>One qubit per asset</h3><p>Twelve well-known stocks, from Coca-Cola to Tesla and MercadoLibre, become twelve qubits.</p></div>
     <div class="card"><span class="num">02</span><h3>RY loads the asset's own risk</h3><p>A rotation by 2·arcsin(√R) leaves in each qubit the risk the asset carries on its own.</p></div>
-    <div class="card"><span class="num">03</span><h3>CRY adds contagion</h3><p>Controlled gates connect the assets that move together, with a correlation of 0.6 or more.</p></div>
+    <div class="card"><span class="num">03</span><h3>CRY couples correlated assets</h3><p>Controlled gates connect the assets that move together, with a correlation of 0.6 or more. We read it as contagion.</p></div>
     <div class="card"><span class="num">04</span><h3>A single measurement run</h3><p>The frequency of 1 in each qubit is its risk index. The portfolio takes the six lowest.</p></div>
   </div>
   <p style="margin-top:20px">What sets the method apart: <strong>the angles come from a formula, not from an optimizer</strong>. There is no loop of many executions as in VQE or QAOA, and one qubit per asset makes it possible to reach 110 assets on a current processor.</p>
@@ -173,7 +173,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <ul class="claro">
     <li><strong>The circuit runs on current hardware.</strong> With 12 qubits the real result almost matches the ideal one. With 110 qubits the noise grows and the overall risk ordering holds.</li>
     <li><strong>There is no quantum advantage.</strong> These circuits can be simulated on a laptop, and a classical method such as Markowitz's achieves lower-risk portfolios.</li>
-    <li><strong>The value is in the validation method.</strong> The circuit is compared against its ideal version and against a classical model, and the next step is to use it inside quantum amplitude estimation.</li>
+    <li><strong>The value is in the validation method.</strong> The circuit is compared against its ideal version and against a classical model, and a possible route to an algorithmic advantage is to use it inside quantum amplitude estimation, which in theory needs fewer samples.</li>
   </ul>
 </section>
 
@@ -181,7 +181,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <h2>What the material includes</h2>
   <div class="grid">
     <div class="card"><h3>Qiskit notebook</h3><p>Eight sections, from Yahoo Finance prices and the Markowitz efficient frontier to VQE, the risk circuit and the final evaluation. It runs on simulators in about a minute.</p></div>
-    <div class="card"><h3>Slides</h3><p>Sixteen slides plus a nine-slide appendix on the notebook: modern portfolio theory, parametric circuits, VQE and QAOA, the method, why it does not start with Hadamard gates, and how to read the results.</p></div>
+    <div class="card"><h3>Slides</h3><p>Seventeen slides plus a nine-slide appendix on the notebook: modern portfolio theory, parametric circuits, VQE and QAOA, the method, why it does not start with Hadamard gates, and how to read the results.</p></div>
     <div class="card"><h3>Real data</h3><p>The result of the 12-qubit circuit on <code>ibm_fez</code>, with its 4,000 shots, and the risk indices from the 110-qubit experiment.</p></div>
   </div>
 </section>
