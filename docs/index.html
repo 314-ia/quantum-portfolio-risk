@@ -162,6 +162,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
       <tr><td>Markowitz, mínimo riesgo</td><td class="n">+20,8 %</td><td class="n">9,6 %</td><td class="n">−4,4 %</td></tr>
       <tr><td>Circuito cuántico, hardware real</td><td class="n">+25,0 %</td><td class="n">11,3 %</td><td class="n">−5,8 %</td></tr>
       <tr><td>Modelo clásico de difusión</td><td class="n">+16,2 %</td><td class="n">10,7 %</td><td class="n">−8,7 %</td></tr>
+      <tr><td>Control: los 6 de menor volatilidad histórica, mismos pesos</td><td class="n">+20,0 %</td><td class="n">9,8 %</td><td class="n">−4,3 %</td></tr>
       <tr><td>SPY, el mercado</td><td class="n">+31,1 %</td><td class="n">12,5 %</td><td class="n">−8,9 %</td></tr>
     </tbody>
   </table></div>
@@ -172,7 +173,7 @@ footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--lin
   <h2>Qué se puede afirmar y qué no</h2>
   <ul class="claro">
     <li><strong>El circuito corre en hardware actual.</strong> Con 12 qubits el resultado real casi coincide con el ideal. Con 110 qubits el ruido crece y el orden general de riesgo se mantiene.</li>
-    <li><strong>No hay ventaja cuántica.</strong> Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo.</li>
+    <li><strong>No hay ventaja cuántica.</strong> Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo. Con la misma regla de pesos, una selección trivial, los 6 activos de menor volatilidad histórica, rinde mejor que la selección del circuito. La regla de pesos se cambió después de una primera evaluación; se sostiene con los datos de entrenamiento, pero hay que decirlo.</li>
     <li><strong>El valor está en el método de validación.</strong> El circuito se compara contra su versión ideal y contra un modelo clásico, y una posible línea hacia una ventaja algorítmica es usarlo dentro de la estimación de amplitud cuántica, que en teoría reduce las muestras necesarias.</li>
   </ul>
 </section>

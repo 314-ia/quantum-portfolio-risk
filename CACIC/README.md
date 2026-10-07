@@ -101,7 +101,11 @@ Trabajo `db1djj3id5ic73er0ceg`: 4.000 mediciones, 3 segundos de procesador. Circ
 - En el experimento de 110 qubits la diferencia promedio con el ideal fue 0,10: el ruido crece con el tamaño del
   circuito.
 
-No hay ventaja cuántica: este circuito se puede simular en una laptop y el método clásico logra menos riesgo.
+No hay ventaja cuántica: este circuito se puede simular en una laptop y el método clásico logra menos riesgo. La prueba de
+control de la sección 8 del notebook es más dura: con la misma regla de pesos, elegir los 6 activos de menor volatilidad
+histórica da 9,8 % de volatilidad y 4,3 % de caída, mejor que la selección del circuito, y el 37 % de 200 selecciones al
+azar termina con menos volatilidad. La regla de pesos se cambió a mínima varianza después de una primera evaluación; la
+decisión se sostiene mirando solo HISTORIA, pero el orden de los hechos fue ese.
 
 ## Diapositivas y notebook
 

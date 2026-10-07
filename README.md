@@ -66,6 +66,7 @@ Evaluación de las carteras con 12 meses de datos que el modelo nunca vio:
 | Markowitz, mínimo riesgo | +20,8 % | 9,6 % | −4,4 % |
 | Circuito cuántico, hardware real | +25,0 % | 11,3 % | −5,8 % |
 | Modelo clásico de difusión | +16,2 % | 10,7 % | −8,7 % |
+| Control: los 6 de menor volatilidad histórica, mismos pesos | +20,0 % | 9,8 % | −4,3 % |
 | SPY, el mercado | +31,1 % | 12,5 % | −8,9 % |
 
 El objetivo del método es bajar el riesgo, así que las columnas que importan son la volatilidad y la máxima caída. La tabla completa y el detalle por activo están en la [guía de la clase](CACIC/README.md).
@@ -73,7 +74,8 @@ El objetivo del método es bajar el riesgo, así que las columnas que importan s
 ## Qué se puede afirmar y qué no
 
 - **El circuito corre en hardware actual.** Con 12 qubits el resultado real casi coincide con el ideal. Con 110 qubits el ruido crece y el orden general de riesgo se mantiene.
-- **No hay ventaja cuántica.** Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo.
+- **No hay ventaja cuántica.** Estos circuitos se pueden simular en una laptop, y un método clásico como el de Markowitz logra carteras de menor riesgo. La prueba de control es más dura: con la misma regla de pesos, elegir los 6 activos de menor volatilidad histórica rinde mejor que la selección del circuito, y el 37 % de 200 selecciones al azar termina con menos volatilidad. En esta muestra, el circuito no aporta una mejor selección.
+- **Transparencia.** La regla de pesos se cambió de 1 / índice a mínima varianza entre los elegidos después de una primera evaluación. La decisión se sostiene mirando solo los datos de entrenamiento, pero el orden de los hechos fue ese.
 - **El valor está en el método de validación.** El circuito se compara contra su versión ideal y contra un modelo clásico, y una posible línea hacia una ventaja algorítmica es usarlo dentro de la estimación de amplitud cuántica, que en teoría reduce las muestras necesarias.
 
 ## Cómo correrlo
