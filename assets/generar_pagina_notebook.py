@@ -11,7 +11,7 @@ from pathlib import Path
 from nbconvert import HTMLExporter
 
 RAIZ = Path(__file__).resolve().parent.parent
-NOTEBOOK = RAIZ / "CACIC" / "notebook" / "Finanzas_Cuanticas_CACIC2026.ipynb"
+NOTEBOOK = RAIZ / "FULL_PROJECT" / "notebook" / "Finanzas_Cuanticas_CACIC2026.ipynb"
 SALIDA = RAIZ / "docs" / "notebook.html"
 SITIO = "https://314-ia.github.io/quantum-portfolio-risk/"
 REPO = "https://github.com/314-ia/quantum-portfolio-risk"
@@ -49,7 +49,7 @@ BARRA = f"""<div style="font:16px/1.4 system-ui,-apple-system,'Segoe UI',Helveti
 <a href="./" style="color:#F7F5EF;font-weight:700;text-decoration:none">Quantum Portfolio Risk</a>
 <span style="color:#9FB3C8">Notebook de la clase, ya ejecutado</span>
 <a href="{REPO}" style="color:#7FB7E6;margin-left:auto">Código en GitHub</a>
-<a href="{REPO}/blob/main/CACIC/notebook/{NOTEBOOK.name}" style="color:#7FB7E6">Descargar el notebook</a>
+<a href="{REPO}/blob/main/FULL_PROJECT/notebook/{NOTEBOOK.name}" style="color:#7FB7E6">Descargar el notebook</a>
 </div>"""
 
 SIN_TEXTO = 'alt="No description has been provided for this image"'

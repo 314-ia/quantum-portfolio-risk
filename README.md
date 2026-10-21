@@ -7,7 +7,7 @@
 [![qubits](https://img.shields.io/badge/qubits-12%20%7C%20110-informational.svg)](#resultados-en-hardware-real)
 [![CACIC 2026](https://img.shields.io/badge/CACIC-2026-orange.svg)](https://frcu.utn.edu.ar/index.php/escuela-cacic/cursos-cacic)
 
-**[Sitio web](https://314-ia.github.io/quantum-portfolio-risk/)** · **[Notebook en línea](https://314-ia.github.io/quantum-portfolio-risk/notebook.html)** · **[Diapositivas en PDF](CACIC/presentacion/Aplicaciones_Financieras_Computacion_Cuantica_CACIC2026.pdf)** · **[English](https://314-ia.github.io/quantum-portfolio-risk/en/)**
+**[Sitio web](https://314-ia.github.io/quantum-portfolio-risk/)** · **[Notebook en línea](https://314-ia.github.io/quantum-portfolio-risk/notebook.html)** · **[Diapositivas en PDF](FULL_PROJECT/presentacion/Aplicaciones_Financieras_Computacion_Cuantica_CACIC2026.pdf)** · **[English](https://314-ia.github.io/quantum-portfolio-risk/en/)**
 
 > Material educativo y de investigación. **No es una recomendación de inversión y no demuestra ventaja cuántica:** estos circuitos se pueden simular en una laptop y un método clásico logra carteras de menor riesgo. Ver [Qué se puede afirmar y qué no](#qué-se-puede-afirmar-y-qué-no).
 
@@ -70,7 +70,7 @@ Evaluación de las carteras en FUTURO, los 12 meses posteriores a la ventana de 
 
 El objetivo del método es bajar el riesgo, así que la columna que importa es la volatilidad.
 
-Cinco meses posteriores, del 30 de abril al 30 de septiembre de 2026, con las carteras congeladas: análogo clásico 10,0 %, circuito 10,5 %, VQE 12,4 %, SPY 12,4 %, Markowitz 13,6 %. El orden entre métodos cambia respecto de FUTURO: ninguna ventaja es robusta. La tabla completa está en la sección 8 del notebook. La tabla completa y el detalle por activo están en la [guía de la clase](CACIC/README.md).
+Cinco meses posteriores, del 30 de abril al 30 de septiembre de 2026, con las carteras congeladas: análogo clásico 10,0 %, circuito 10,5 %, VQE 12,4 %, SPY 12,4 %, Markowitz 13,6 %. El orden entre métodos cambia respecto de FUTURO: ninguna ventaja es robusta. La tabla completa está en la sección 8 del notebook. La tabla completa y el detalle por activo están en la [guía de la clase](FULL_PROJECT/README.md).
 
 ## Qué se puede afirmar y qué no
 
@@ -83,7 +83,7 @@ Cinco meses posteriores, del 30 de abril al 30 de septiembre de 2026, con las ca
 
 ```bash
 git clone https://github.com/314-ia/quantum-portfolio-risk.git
-cd quantum-portfolio-risk/CACIC
+cd quantum-portfolio-risk/FULL_PROJECT
 python3 -m venv .venv
 .venv/bin/pip install -r notebook/requirements.txt
 .venv/bin/jupyter lab notebook/Finanzas_Cuanticas_CACIC2026.ipynb
@@ -92,15 +92,15 @@ python3 -m venv .venv
 - Las versiones fijadas exigen Python 3.12 como mínimo. Se probó con Python 3.13.
 - El notebook corre de arriba hacia abajo en alrededor de un minuto. Todo lo cuántico se ejecuta en simuladores, salvo un paso opcional que envía el circuito a una computadora real de IBM.
 - Los precios se bajan de Yahoo Finance al ejecutar.
-- Cómo correr en hardware real, y más detalle, en la [guía de la clase](CACIC/README.md).
+- Cómo correr en hardware real, y más detalle, en la [guía de la clase](FULL_PROJECT/README.md).
 
 ## Contenido
 
-- [`CACIC/notebook/Finanzas_Cuanticas_CACIC2026.ipynb`](CACIC/notebook/Finanzas_Cuanticas_CACIC2026.ipynb): el notebook de la clase, ya ejecutado, con salidas y figuras
-- [`CACIC/presentacion/`](CACIC/presentacion/): las 30 diapositivas en PDF, con un anexo que explica el notebook sección por sección
-- [`CACIC/notebook/datos/`](CACIC/notebook/datos/): resultado real del circuito de 12 qubits y datos del experimento de 110 qubits
-- [`CACIC/material_extra/figuras/`](CACIC/material_extra/figuras/): las figuras de las diapositivas
-- [`CACIC/README.md`](CACIC/README.md): la guía de la clase
+- [`FULL_PROJECT/notebook/Finanzas_Cuanticas_CACIC2026.ipynb`](FULL_PROJECT/notebook/Finanzas_Cuanticas_CACIC2026.ipynb): el notebook de la clase, ya ejecutado, con salidas y figuras
+- [`FULL_PROJECT/presentacion/`](FULL_PROJECT/presentacion/): las 30 diapositivas en PDF, con un anexo que explica el notebook sección por sección
+- [`FULL_PROJECT/notebook/datos/`](FULL_PROJECT/notebook/datos/): resultado real del circuito de 12 qubits y datos del experimento de 110 qubits
+- [`FULL_PROJECT/material_extra/figuras/`](FULL_PROJECT/material_extra/figuras/): las figuras de las diapositivas
+- [`FULL_PROJECT/README.md`](FULL_PROJECT/README.md): la guía de la clase
 - [`docs/`](docs/): el [sitio web](https://314-ia.github.io/quantum-portfolio-risk/) del proyecto, con el notebook ejecutado para leer en línea
 - [`assets/`](assets/): la animación del método y los guiones que generan la animación y la página del notebook
 

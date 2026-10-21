@@ -39,7 +39,7 @@ El notebook también se puede leer en línea, ya ejecutado, en el
 
 ```bash
 git clone https://github.com/314-ia/quantum-portfolio-risk.git
-cd quantum-portfolio-risk/CACIC
+cd quantum-portfolio-risk/FULL_PROJECT
 python3 -m venv .venv
 .venv/bin/pip install -r notebook/requirements.txt
 .venv/bin/jupyter lab notebook/Finanzas_Cuanticas_CACIC2026.ipynb
@@ -63,7 +63,7 @@ envía nada. Para enviar una corrida propia:
 
 1. Crear una cuenta gratuita en [IBM Quantum](https://quantum.cloud.ibm.com) y obtener la API key y la instancia.
 2. Copiar `notebook/.env.example` con el nombre `.env` y completar los valores. El notebook lo busca junto a él,
-   en la carpeta `CACIC/` o en la raíz del repositorio. Ese archivo es personal: no se comparte ni se sube.
+   en la carpeta `FULL_PROJECT/` o en la raíz del repositorio. Ese archivo es personal: no se comparte ni se sube.
 3. Borrar o renombrar `notebook/datos/resultado_hardware.json`.
 4. En la sección 7.2, poner `EJECUTAR_EN_HARDWARE = True` y ejecutar la celda.
 

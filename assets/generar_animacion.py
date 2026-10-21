@@ -1,6 +1,6 @@
 """Genera la animación SVG de "Cómo se compone el método" que muestra el README.
 
-Usa los datos reales de la clase, tomados de la tabla de CACIC/README.md: la probabilidad de medir 1 en
+Usa los datos reales de la clase, tomados de la tabla de FULL_PROJECT/README.md: la probabilidad de medir 1 en
 cada qubit después de la rotación RY, después de las compuertas CRY, y el índice medido en ibm_fez.
 No necesita ningún paquete. Uso: python3 generar_animacion.py como-se-compone-el-metodo.svg"""
 import math, sys
@@ -8,7 +8,7 @@ import math, sys
 T = 18.0                                   # segundos por ciclo
 W, H = 1000, 440
 TICKERS = ["AAPL", "MSFT", "AMZN", "NVDA", "TSLA", "MELI", "JPM", "BAC", "XOM", "CVX", "KO", "PEP"]
-# Probabilidad de medir 1 después de cada etapa (tabla de CACIC/README.md): tras RY, tras CRY (ideal) y medida en ibm_fez
+# Probabilidad de medir 1 después de cada etapa (tabla de FULL_PROJECT/README.md): tras RY, tras CRY (ideal) y medida en ibm_fez
 TRAS_RY = dict(AAPL=.292, MSFT=.236, AMZN=.359, NVDA=.692, TSLA=.950, MELI=.585, JPM=.000, BAC=.128, XOM=.314, CVX=.325, KO=.000, PEP=.142)
 IDEAL   = dict(AAPL=.292, MSFT=.502, AMZN=.510, NVDA=.692, TSLA=.950, MELI=.585, JPM=.096, BAC=.128, XOM=.449, CVX=.529, KO=.095, PEP=.142)
 MEDIDO  = dict(AAPL=.279, MSFT=.468, AMZN=.497, NVDA=.681, TSLA=.943, MELI=.567, JPM=.101, BAC=.143, XOM=.445, CVX=.513, KO=.108, PEP=.153)
