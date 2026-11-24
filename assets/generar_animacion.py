@@ -1,9 +1,43 @@
-"""Genera la animación SVG de "Cómo se compone el método" que muestra el README.
+"""Genera la animación SVG de "Cómo se compone el método" que muestra el README, en español y en inglés.
 
 Usa los datos reales de la clase, tomados de la tabla de FULL_PROJECT/README.md: la probabilidad de medir 1 en
 cada qubit después de la rotación RY, después de las compuertas CRY, y el índice medido en ibm_fez.
-No necesita ningún paquete. Uso: python3 generar_animacion.py como-se-compone-el-metodo.svg"""
+No necesita ningún paquete. Uso:
+    python3 generar_animacion.py                    escribe los dos idiomas en assets/ y en docs/assets/
+    python3 generar_animacion.py en salida.svg      escribe un solo idioma (es o en) en el archivo indicado
+
+English: builds the animated SVG "How the method works" shown in the README, in Spanish and in English.
+It uses the real data from the class, taken from the table in FULL_PROJECT/en/README.md: the probability of
+measuring 1 in each qubit after the RY rotation, after the CRY gates, and the index measured on ibm_fez.
+It needs no packages. Usage:
+    python3 generar_animacion.py                    writes both languages to assets/ and docs/assets/
+    python3 generar_animacion.py en output.svg      writes a single language (es or en) to the given file"""
 import math, sys
+from pathlib import Path
+
+# Todo lo que cambia entre idiomas: los textos y el separador decimal de los valores.
+TEXTOS = {
+    "es": dict(archivo="como-se-compone-el-metodo.svg", coma=",",
+               titulo="Cómo se compone el método",
+               descripcion="Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY acoplan los activos correlacionados, lo que leemos como contagio. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera pesa cada activo por 1 / índice: los más tranquilos pesan más.",
+               rotulo="CÓMO SE COMPONE EL MÉTODO",
+               datos="12 activos reales · 12 qubits · resultado medido en ibm_fez",
+               leyendas=["Cada activo es un qubit",
+                         "RY carga el riesgo propio: a más riesgo, más gira la flecha hacia el 1",
+                         "CRY acopla a los activos que se mueven juntos: el contagio",
+                         "Se mide una sola vez: la frecuencia de 1 es el índice de riesgo",
+                         "La cartera pesa cada activo por 1 / índice: los más tranquilos pesan más"]),
+    "en": dict(archivo="how-the-method-works.svg", coma=".",
+               titulo="How the method works",
+               descripcion="Twelve qubits, one per asset. An RY rotation loads each asset's own risk into its qubit. CRY gates couple the correlated assets, which we read as contagion. On measurement, the frequency of 1 in each qubit is its risk index. The portfolio weights each asset by 1 / index: the calmest weigh the most.",
+               rotulo="HOW THE METHOD WORKS",
+               datos="12 real assets · 12 qubits · result measured on ibm_fez",
+               leyendas=["Each asset is a qubit",
+                         "RY loads each asset's own risk: more risk turns the arrow further toward 1",
+                         "CRY couples the assets that move together: contagion",
+                         "Measured in a single run: the frequency of 1 is the risk index",
+                         "The portfolio weights each asset by 1 / index: the calmest weigh the most"]),
+}
 
 T = 18.0                                   # segundos por ciclo
 W, H = 1000, 440
@@ -38,10 +72,16 @@ def onda(xa, xb, sentido=1, puntos=70, amplitud=5.0, ciclos=4):
     total = sum(math.hypot(pts[i + 1][0] - pts[i][0], pts[i + 1][1] - pts[i][1]) for i in range(puntos))
     return "M" + " L".join(f"{n(px)},{n(py)}" for px, py in pts), total
 
-s = []
-s.append(f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
-<title id="t">Cómo se compone el método</title>
-<desc id="d">Doce qubits, uno por activo. Una rotación RY carga en cada qubit el riesgo propio del activo. Compuertas CRY acoplan los activos correlacionados, lo que leemos como contagio. Al medir, la frecuencia de 1 de cada qubit es su índice de riesgo. La cartera pesa cada activo por 1 / índice: los más tranquilos pesan más.</desc>
+import random
+
+
+def generar(idioma):
+    """Devuelve el SVG completo en el idioma pedido."""
+    tx = TEXTOS[idioma]
+    s = []
+    s.append(f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">{tx["titulo"]}</title>
+<desc id="d">{tx["descripcion"]}</desc>
 <defs>
   <radialGradient id="fondo" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="#16304f"/><stop offset="1" stop-color="#0b1626"/></radialGradient>
   <linearGradient id="haz" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F7F5EF" stop-opacity="0"/><stop offset=".5" stop-color="#F7F5EF" stop-opacity=".95"/><stop offset="1" stop-color="#F7F5EF" stop-opacity="0"/></linearGradient>
@@ -90,46 +130,45 @@ s.append(f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" vi
 <rect width="{W}" height="{H}" rx="14" fill="url(#fondo)"/>
 <rect width="{W}" height="{H}" rx="14" fill="url(#trama)"/>
 <rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="14" fill="none" stroke="#28405f"/>
-<text x="34" y="36" font-size="12.5" font-weight="600" letter-spacing="2.4" fill="#7FB7E6">CÓMO SE COMPONE EL MÉTODO</text>
-<text x="{W - 34}" y="36" font-size="12.5" text-anchor="end" fill="#8FA5BD">12 activos reales · 12 qubits · resultado medido en ibm_fez</text>''')
+<text x="34" y="36" font-size="12.5" font-weight="600" letter-spacing="2.4" fill="#7FB7E6">{tx["rotulo"]}</text>
+<text x="{W - 34}" y="36" font-size="12.5" text-anchor="end" fill="#8FA5BD">{tx["datos"]}</text>''')
 
-# motas de fondo
-import random
-rnd = random.Random(7)
-for i in range(18):
-    s.append(f'<circle class="mota" cx="{rnd.uniform(20, W - 20):.0f}" cy="{rnd.uniform(52, H - 60):.0f}" r="{rnd.choice([.9, 1.1, 1.4])}" fill="#BFD9F2" style="animation-delay:-{rnd.uniform(0, 5):.1f}s;animation-duration:{rnd.uniform(3.5, 7):.1f}s"/>')
+    # motas de fondo
+    rnd = random.Random(7)
+    for i in range(18):
+        s.append(f'<circle class="mota" cx="{rnd.uniform(20, W - 20):.0f}" cy="{rnd.uniform(52, H - 60):.0f}" r="{rnd.choice([.9, 1.1, 1.4])}" fill="#BFD9F2" style="animation-delay:-{rnd.uniform(0, 5):.1f}s;animation-duration:{rnd.uniform(3.5, 7):.1f}s"/>')
 
-# ondas de fondo: la superposición antes de medir
-def seno(y0, amp, fase, largo_onda=240):
-    pts = [(xx, y0 + amp * math.sin(2 * math.pi * xx / largo_onda + fase)) for xx in range(-10, W + 260, 10)]
-    return "M" + " L".join(f"{px},{py:.1f}" for px, py in pts)
-s.append('<g class="c ondas" clip-path="url(#marco)">')
-for y0, amp, fase, col_o, op, dur in ((262, 16, 0.0, "#7FB7E6", .20, 9), (292, 22, 1.7, "#7FB7E6", .13, 13), (322, 13, 3.1, "#F2A65A", .14, 11)):
-    s.append(f'<path class="onda" d="{seno(y0, amp, fase)}" fill="none" stroke="{col_o}" stroke-width="1.6" opacity="{op}" style="animation-duration:{dur}s"/>')
-s.append("</g>")
+    # ondas de fondo: la superposición antes de medir
+    def seno(y0, amp, fase, largo_onda=240):
+        pts = [(xx, y0 + amp * math.sin(2 * math.pi * xx / largo_onda + fase)) for xx in range(-10, W + 260, 10)]
+        return "M" + " L".join(f"{px},{py:.1f}" for px, py in pts)
+    s.append('<g class="c ondas" clip-path="url(#marco)">')
+    for y0, amp, fase, col_o, op, dur in ((262, 16, 0.0, "#7FB7E6", .20, 9), (292, 22, 1.7, "#7FB7E6", .13, 13), (322, 13, 3.1, "#F2A65A", .14, 11)):
+        s.append(f'<path class="onda" d="{seno(y0, amp, fase)}" fill="none" stroke="{col_o}" stroke-width="1.6" opacity="{op}" style="animation-duration:{dur}s"/>')
+    s.append("</g>")
 
-# referencia de lectura: arriba 0, abajo 1
-s.append(f'<g font-size="10" fill="#8FA5BD" text-anchor="middle"><text x="16" y="{YQ - RB + 4}">0</text><text x="16" y="{YQ + RB + 3}">1</text>'
-         f'<path d="M22,{YQ - RB} h5 M22,{YQ + RB} h5" stroke="#8FA5BD" stroke-width=".8"/></g>')
+    # referencia de lectura: arriba 0, abajo 1
+    s.append(f'<g font-size="10" fill="#8FA5BD" text-anchor="middle"><text x="16" y="{YQ - RB + 4}">0</text><text x="16" y="{YQ + RB + 3}">1</text>'
+             f'<path d="M22,{YQ - RB} h5 M22,{YQ + RB} h5" stroke="#8FA5BD" stroke-width=".8"/></g>')
 
-# enlaces y paquetes de onda (contagio)
-for a, b in PARES:
-    ida, largo = onda(x[a], x[b], 1)
-    vuelta, _ = onda(x[b], x[a], -1)
-    s.append(f'<path class="c enlace" d="M{n(x[a] + 12)},{YQ + 35} Q{n((x[a] + x[b]) / 2)},{YQ + 82} {n(x[b] - 12)},{YQ + 35}" fill="none" stroke="#F2A65A" stroke-width="1.2" stroke-dasharray="2 4"/>')
-    tramo = 0.36 * largo
-    for d, retraso in ((ida, 0), (vuelta, 0.55)):
-        s.append(f'<path class="c foton" d="{d}" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="{tramo:.1f} {largo + tramo:.1f}" style="--s:{tramo:.1f};--f:-{largo:.1f};animation-delay:{retraso}s"/>')
+    # enlaces y paquetes de onda (contagio)
+    for a, b in PARES:
+        ida, largo = onda(x[a], x[b], 1)
+        vuelta, _ = onda(x[b], x[a], -1)
+        s.append(f'<path class="c enlace" d="M{n(x[a] + 12)},{YQ + 35} Q{n((x[a] + x[b]) / 2)},{YQ + 82} {n(x[b] - 12)},{YQ + 35}" fill="none" stroke="#F2A65A" stroke-width="1.2" stroke-dasharray="2 4"/>')
+        tramo = 0.36 * largo
+        for d, retraso in ((ida, 0), (vuelta, 0.55)):
+            s.append(f'<path class="c foton" d="{d}" fill="none" stroke="#FFE2BD" stroke-width="2.5" stroke-linecap="round" filter="url(#brillo)" stroke-dasharray="{tramo:.1f} {largo + tramo:.1f}" style="--s:{tramo:.1f};--f:-{largo:.1f};animation-delay:{retraso}s"/>')
 
-# qubits
-for k, t in enumerate(TICKERS):
-    xk, a, b = x[t], angulo(TRAS_RY[t]), angulo(IDEAL[t])
-    col, elegido = color(MEDIDO[t]), t in ELEGIDOS
-    abre = "" if elegido else '<g class="c resto">'
-    cierra = "" if elegido else "</g>"
-    dur, ini = 2.2 + 0.23 * ((k * 5) % 7), -0.37 * k
-    orbita = f"M{n(xk - 37)},{YQ} a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"
-    s.append(f'''{abre}<g class="c qubit" style="animation-delay:{0.07 * k:.2f}s">
+    # qubits
+    for k, t in enumerate(TICKERS):
+        xk, a, b = x[t], angulo(TRAS_RY[t]), angulo(IDEAL[t])
+        col, elegido = color(MEDIDO[t]), t in ELEGIDOS
+        abre = "" if elegido else '<g class="c resto">'
+        cierra = "" if elegido else "</g>"
+        dur, ini = 2.2 + 0.23 * ((k * 5) % 7), -0.37 * k
+        orbita = f"M{n(xk - 37)},{YQ} a37,11 0 1,0 74,0 a37,11 0 1,0 -74,0"
+        s.append(f'''{abre}<g class="c qubit" style="animation-delay:{0.07 * k:.2f}s">
   <text x="{n(xk)}" y="80" font-size="13" font-weight="600" text-anchor="middle" fill="#DCE6F0">{t}</text>
   <circle cx="{n(xk)}" cy="{YQ}" r="{RB}" fill="#0b1626" fill-opacity=".55" stroke="#7FB7E6" stroke-opacity=".28"/>
   <g transform="rotate(-18 {n(xk)} {YQ})"><path d="{orbita}" fill="none" stroke="#7FB7E6" stroke-opacity=".22" stroke-width=".8"/>
@@ -139,26 +178,32 @@ for k, t in enumerate(TICKERS):
     <path d="M{n(xk - 5)},{YQ - 20.5} L{n(xk)},{YQ - 30} L{n(xk + 5)},{YQ - 20.5} Z" fill="{col}"/></g>
   <circle cx="{n(xk)}" cy="{YQ}" r="4.6" fill="#F7F5EF" filter="url(#brillo)"/>
 </g>''')
-    # barra con el índice medido
-    h = ALTO * MEDIDO[t]
-    retraso = 0.12 * T * (xk - 34) / 932
-    s.append(f'''<g class="c resultado"><rect class="c barra" x="{n(xk - 13)}" y="{BASE - h:.1f}" width="26" height="{h:.1f}" rx="3" fill="{col}" style="transform-origin:{n(xk)}px {BASE}px;animation-delay:{retraso:.2f}s"/>
-<text class="c valor" x="{n(xk)}" y="{BASE - h - 7:.1f}" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:{retraso:.2f}s">{f"{MEDIDO[t]:.2f}".replace(".", ",")}</text></g>{cierra}''')
-    if elegido:
-        s.append(f'<g class="c marca"><rect x="{n(xk - 15.5)}" y="{BASE - h - 2.5:.1f}" width="31" height="{h + 2.5:.1f}" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/>'
-                 f'<circle cx="{n(xk)}" cy="{BASE + 13}" r="3.4" fill="#F7F5EF"/></g>')
+        # barra con el índice medido
+        h = ALTO * MEDIDO[t]
+        retraso = 0.12 * T * (xk - 34) / 932
+        s.append(f'''<g class="c resultado"><rect class="c barra" x="{n(xk - 13)}" y="{BASE - h:.1f}" width="26" height="{h:.1f}" rx="3" fill="{col}" style="transform-origin:{n(xk)}px {BASE}px;animation-delay:{retraso:.2f}s"/>
+<text class="c valor" x="{n(xk)}" y="{BASE - h - 7:.1f}" font-size="11.5" text-anchor="middle" fill="#DCE6F0" style="animation-delay:{retraso:.2f}s">{f"{MEDIDO[t]:.2f}".replace(".", tx["coma"])}</text></g>{cierra}''')
+        if elegido:
+            s.append(f'<g class="c marca"><rect x="{n(xk - 15.5)}" y="{BASE - h - 2.5:.1f}" width="31" height="{h + 2.5:.1f}" rx="4.5" fill="none" stroke="#F7F5EF" stroke-width="1.4"/>'
+                     f'<circle cx="{n(xk)}" cy="{BASE + 13}" r="3.4" fill="#F7F5EF"/></g>')
 
-s.append(f'<path d="M34,{BASE + .5} H{W - 34}" stroke="#3a5373" stroke-width="1"/>')
-s.append(f'<g class="c barrido"><rect x="-16" y="90" width="32" height="{BASE - 86}" fill="url(#haz)" opacity=".13"/><rect x="-5" y="90" width="10" height="{BASE - 86}" fill="url(#haz)" opacity=".22"/><rect x="-1.1" y="90" width="2.2" height="{BASE - 86}" fill="url(#haz)"/></g>')
+    s.append(f'<path d="M34,{BASE + .5} H{W - 34}" stroke="#3a5373" stroke-width="1"/>')
+    s.append(f'<g class="c barrido"><rect x="-16" y="90" width="32" height="{BASE - 86}" fill="url(#haz)" opacity=".13"/><rect x="-5" y="90" width="10" height="{BASE - 86}" fill="url(#haz)" opacity=".22"/><rect x="-1.1" y="90" width="2.2" height="{BASE - 86}" fill="url(#haz)"/></g>')
 
-leyendas = ["Cada activo es un qubit",
-            "RY carga el riesgo propio: a más riesgo, más gira la flecha hacia el 1",
-            "CRY acopla a los activos que se mueven juntos: el contagio",
-            "Se mide una sola vez: la frecuencia de 1 es el índice de riesgo",
-            "La cartera pesa cada activo por 1 / índice: los más tranquilos pesan más"]
-for i, txt in enumerate(leyendas, 1):
-    s.append(f'<text class="c leyenda l{i}" x="{W / 2:g}" y="{H - 20}" font-size="18.5" text-anchor="middle" fill="#F7F5EF">'
-             f'<tspan fill="#F2A65A" font-weight="700">{i}</tspan><tspan fill="#5d7696">  ·  </tspan>{txt}</text>')
-s.append("</svg>")
-open(sys.argv[1], "w", encoding="utf-8").write("\n".join(s) + "\n")
-print("escrito", sys.argv[1], "|", sum(len(p) for p in s) // 1000, "KB | elegidos:", sorted(ELEGIDOS, key=MEDIDO.get))
+    leyendas = tx["leyendas"]
+    for i, txt in enumerate(leyendas, 1):
+        s.append(f'<text class="c leyenda l{i}" x="{W / 2:g}" y="{H - 20}" font-size="18.5" text-anchor="middle" fill="#F7F5EF">'
+                 f'<tspan fill="#F2A65A" font-weight="700">{i}</tspan><tspan fill="#5d7696">  ·  </tspan>{txt}</text>')
+    s.append("</svg>")
+    return "\n".join(s) + "\n"
+
+
+if len(sys.argv) == 3:                     # un idioma, a un archivo
+    destinos = [(sys.argv[1], Path(sys.argv[2]))]
+else:                                      # los dos idiomas, a assets/ y a docs/assets/
+    aqui = Path(__file__).resolve().parent
+    destinos = [(i, carpeta / TEXTOS[i]["archivo"]) for i in TEXTOS for carpeta in (aqui, aqui.parent / "docs" / "assets")]
+for idioma, destino in destinos:
+    svg = generar(idioma)
+    destino.write_text(svg, encoding="utf-8")
+    print("escrito", destino, "|", len(svg) // 1000, "KB | elegidos:", sorted(ELEGIDOS, key=MEDIDO.get))

@@ -1,5 +1,7 @@
 # Aplicaciones Financieras en la Computación Cuántica
 
+[English](en/README.md) · **Español**
+
 Material de la clase de Juan Pablo Braña (CAETI, Universidad Abierta Interamericana) en la XXX Escuela Internacional
 de Informática del CACIC 2026, UTN Facultad Regional Concepción del Uruguay, 5 al 9 de octubre de 2026. Forma parte
 del Curso 3: "Fundamentos e Intuición del Cómputo Cuántico – De los Principios a sus Aplicaciones".
@@ -21,6 +23,7 @@ El notebook también se puede leer en línea, ya ejecutado, en el
 | `notebook/requirements.txt` | Paquetes necesarios, en las versiones con que se construyó y probó el notebook |
 | `notebook/.env.example` | Plantilla para las credenciales de IBM Quantum |
 | `material_extra/figuras/` | Las figuras de las diapositivas en PNG |
+| `en/` | La versión completa en inglés: guía, notebook con el código traducido y ejecutado, diapositivas y figuras |
 
 ## Qué recorre el notebook
 
@@ -111,20 +114,22 @@ evaluación, la última vez por diseño, para que ningún número fuera una deci
 
 | Diapositivas | Sección del notebook |
 |---|---|
-| Teoría moderna de carteras y frontera eficiente, 2 a 4 | 2 |
-| Circuitos paramétricos, 5 y 6 | 3 |
-| VQE y QAOA, 7 | 4 |
-| Nuestra aproximación, 8 | 5 |
-| Optimizadores cuánticos y nuestra aproximación, 9 | 4, 5 y 8 |
-| Por qué no arrancamos con Hadamard, 10 | 6 |
-| Nuestro código en seis pasos, 11 | 1, 5, 7 y 8 |
-| Quantum Portfolio Optimizer y nuestra propuesta, 12 | No está en el notebook |
-| Del pizarrón al notebook, 13 | Acá se pasa a la demostración |
-| Cómo leer los resultados, 14 | 7 y 8 |
+| Mapa del territorio, 2 | No está en el notebook |
+| Teoría moderna de carteras y frontera eficiente, 3 a 5 | 2 |
+| Circuitos paramétricos, 6 a 9 | 3 y 5 |
+| VQE y QAOA, 10 | 4 |
+| Nuestra aproximación, 11 | 5 |
+| Optimizadores cuánticos y nuestra aproximación, 12 | 4, 5 y 8 |
+| Por qué no arrancamos con Hadamard, 13 | 6 |
+| Nuestro código en seis pasos, 14 | 1, 5, 7 y 8 |
+| De 4.000 mediciones a la cartera, 15 | 7 y 8 |
+| Quantum Portfolio Optimizer y nuestra propuesta, 16 | No está en el notebook |
+| Cómo leer los resultados, 17 | 7 y 8 |
+| Anexo, 19 a 30 | Todo el notebook, sección por sección, con las celdas de código de cada parte |
 
 ## Fuentes de la comparación con IBM
 
-La diapositiva 12 compara esta propuesta con el Quantum Portfolio Optimizer, una Qiskit Function de Global Data
+La diapositiva 16 compara esta propuesta con el Quantum Portfolio Optimizer, una Qiskit Function de Global Data
 Quantum disponible en el catálogo de IBM. La comparación se hizo leyendo su documentación: la función no se ejecutó,
 porque exige un plan Premium, Flex u On-Prem.
 

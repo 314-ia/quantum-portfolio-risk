@@ -1,18 +1,23 @@
 # Credenciales: nunca se suben a un repositorio
+# Credentials: never uploaded to a repository
 .env
 .env.*
 !.env.example
 
-# Entornos de Python locales: se recrean con FULL_PROJECT/notebook/requirements.txt
+# Entornos de Python locales: se recrean con el requirements.txt de cada notebook
+# Local Python environments: recreated from each notebook's requirements.txt
 .venv/
 
-# Copia local de precios: Yahoo limita sus datos a uso personal.
-# El notebook la vuelve a bajar y la recrea en la primera ejecución.
+# Copias locales de precios: Yahoo limita sus datos a uso personal.
+# El notebook las vuelve a bajar y las recrea en la primera ejecución.
+# Local price copies: Yahoo limits its data to personal use.
+# The notebook downloads them again and recreates them on the first run.
 FULL_PROJECT/notebook/datos/precios_yahoo.csv
+FULL_PROJECT/notebook/datos/precios_yahoo_validacion.csv
+FULL_PROJECT/en/notebook/data/yahoo_prices.csv
+FULL_PROJECT/en/notebook/data/yahoo_prices_validation.csv
 
-# Python y Jupyter
+# Python y Jupyter / Python and Jupyter
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-
-FULL_PROJECT/notebook/datos/precios_yahoo_validacion.csv

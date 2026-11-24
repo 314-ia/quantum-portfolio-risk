@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "Aplicaciones Financieras en la Computación Cuántica"
-message: "Para citar este material del curso, usar estos datos."
+message: "To cite this course material, use this metadata. / Para citar este material del curso, usar estos datos."
 type: software
 authors:
   - family-names: "Brana"
@@ -15,9 +15,12 @@ authors:
 repository-code: "https://github.com/314-ia/quantum-portfolio-risk"
 url: "https://314-ia.github.io/quantum-portfolio-risk/"
 abstract: >-
-  Material del curso: diapositivas y un notebook de Qiskit que arma carteras de inversión con precios
-  reales de mercado y recorre el camino de la frontera eficiente de Markowitz a un circuito cuántico
-  paramétrico ejecutado en una computadora cuántica de IBM.
+  Financial Applications of Quantum Computing. Course material, in English and Spanish: slides and a
+  Qiskit notebook that builds investment portfolios from real market prices and walks the path from
+  Markowitz's efficient frontier to a parametric quantum circuit run on an IBM quantum computer.
+  Material del curso, en español y en inglés: diapositivas y un notebook de Qiskit que arma carteras de
+  inversión con precios reales de mercado y recorre el camino de la frontera eficiente de Markowitz a un
+  circuito cuántico paramétrico ejecutado en una computadora cuántica de IBM.
 license: MIT
 date-released: "2026-10-04"
 keywords:

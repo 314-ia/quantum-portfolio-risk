@@ -4,16 +4,24 @@
     <loc>https://314-ia.github.io/quantum-portfolio-risk/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://314-ia.github.io/quantum-portfolio-risk/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://314-ia.github.io/quantum-portfolio-risk/en/"/>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-11-23</lastmod>
   </url>
   <url>
     <loc>https://314-ia.github.io/quantum-portfolio-risk/en/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://314-ia.github.io/quantum-portfolio-risk/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://314-ia.github.io/quantum-portfolio-risk/en/"/>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-11-23</lastmod>
   </url>
   <url>
     <loc>https://314-ia.github.io/quantum-portfolio-risk/notebook.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://314-ia.github.io/quantum-portfolio-risk/notebook.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://314-ia.github.io/quantum-portfolio-risk/en/notebook.html"/>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://314-ia.github.io/quantum-portfolio-risk/en/notebook.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://314-ia.github.io/quantum-portfolio-risk/notebook.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://314-ia.github.io/quantum-portfolio-risk/en/notebook.html"/>
+    <lastmod>2026-11-23</lastmod>
   </url>
 </urlset>
